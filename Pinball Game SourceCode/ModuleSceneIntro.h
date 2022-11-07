@@ -35,6 +35,9 @@ public:
 
 	//Death Sensor
 	PhysBody* through;
+
+
+	PhysBody* wall;
 	bool sensed;
 
 	// Textures

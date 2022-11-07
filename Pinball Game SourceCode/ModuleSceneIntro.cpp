@@ -41,6 +41,9 @@ bool ModuleSceneIntro::Start()
 
 	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 32, 32, b2BodyType::b2_kinematicBody, ColliderType::WALL);
 
+	//Upper Wall Collider
+	wall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH - 2, -64, b2BodyType::b2_staticBody, ColliderType::WALL);
+
 	//Death Collider
 	through = App->physics->CreateRectangle(64*5 + 32, (SCREEN_HEIGHT-32) + 16, 64*2, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
 
