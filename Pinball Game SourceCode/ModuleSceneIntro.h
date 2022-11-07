@@ -29,7 +29,11 @@ public:
 
 	// Lower ground sensor (will kill all objects passig through it)
 	PhysBody* lower_ground_sensor;
+
+	//Shooter
 	PhysBody* shooter;
+
+	//Death Sensor
 	PhysBody* through;
 	bool sensed;
 

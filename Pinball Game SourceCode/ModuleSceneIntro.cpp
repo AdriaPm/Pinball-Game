@@ -37,12 +37,12 @@ bool ModuleSceneIntro::Start()
 
 	// Create a big red sensor on the bottom of the screen.
 	// This sensor will not make other objects collide with it, but it can tell if it is "colliding" with something else
-	lower_ground_sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50, b2BodyType::b2_staticBody);
+	lower_ground_sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50, b2BodyType::b2_staticBody, ColliderType::WALL);
 
-	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 32, 32, b2BodyType::b2_staticBody);
+	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 32, 32, b2BodyType::b2_kinematicBody, ColliderType::WALL);
 
 	//Death Collider
-	through = App->physics->CreateRectangle(64*5 + 32, (SCREEN_HEIGHT-32) + 16, 64*2, 32, b2BodyType::b2_staticBody);
+	through = App->physics->CreateRectangle(64*5 + 32, (SCREEN_HEIGHT-32) + 16, 64*2, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
 
 	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
@@ -75,7 +75,7 @@ update_status ModuleSceneIntro::Update()
 	// If user presses 1, create a new circle object
 	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
-		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 25));
+		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 25, b2BodyType::b2_dynamicBody, ColliderType::WALL));
 
 		// Add this module (ModuleSceneIntro) as a "listener" interested in collisions with circles.
 		// If Box2D detects a collision with this last generated circle, it will automatically callback the function ModulePhysics::BeginContact()
@@ -85,7 +85,7 @@ update_status ModuleSceneIntro::Update()
 	// If user presses 2, create a new box object
 	if(App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 	{
-		boxes.add(App->physics->CreateRectangle(App->input->GetMouseX(), App->input->GetMouseY(), 100, 50, b2BodyType::b2_dynamicBody));
+		boxes.add(App->physics->CreateRectangle(App->input->GetMouseX(), App->input->GetMouseY(), 100, 50, b2BodyType::b2_dynamicBody, ColliderType::WALL));
 	}
 
 	// If user presses 3, create a new RickHead object
@@ -127,7 +127,7 @@ update_status ModuleSceneIntro::Update()
 			30, 62
 		};
 
-		ricks.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), rick_head, 64));
+		ricks.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), rick_head, 64, b2BodyType::b2_dynamicBody, ColliderType::WALL));
 	}
 
 	// Prepare for raycast ------------------------------------------------------
