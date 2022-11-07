@@ -12,6 +12,17 @@
 #define METERS_TO_PIXELS(m) ((int) floor(PIXELS_PER_METER * m))
 #define PIXEL_TO_METERS(p)  ((float) METER_PER_PIXEL * p)
 
+enum class ColliderType {
+	BALL,
+	WALL,
+	BONUS,
+	BUMPER, //Circle that makes bounce
+	SLINGSHOT, //Triangle that bounces
+	ROLLOVER, //Let pass or not the ball if a bool is active
+	THROUGH,
+	UNKNOWN
+};
+
 // Small class to return to other modules to track position and rotation of physics bodies
 class PhysBody
 {
@@ -27,6 +38,7 @@ public:
 public:
 	int width, height;
 	b2Body* body;
+	ColliderType cType;
 	Module* listener;
 };
 
@@ -49,10 +61,10 @@ public:
 	void CreateScenarioGround();
 
 	// Create basic physics objects
-	PhysBody* CreateCircle(int x, int y, int radius);
-	PhysBody* CreateRectangle(int x, int y, int width, int height);
-	PhysBody* CreateRectangleSensor(int x, int y, int width, int height);
-	PhysBody* CreateChain(int x, int y, int* points, int size);
+	PhysBody* CreateCircle(int x, int y, int radius, b2BodyType bType, ColliderType ctype);
+	PhysBody* CreateRectangle(int x, int y, int width, int height, b2BodyType bType, ColliderType ctype);
+	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, b2BodyType bType, ColliderType ctype);
+	PhysBody* CreateChain(int x, int y, int* points, int size, b2BodyType bType, ColliderType ctype);
 
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);

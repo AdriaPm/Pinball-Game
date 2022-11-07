@@ -273,7 +273,7 @@ void ModulePhysics::CreateScenarioGround()
 	big_ball->CreateFixture(&fixture);
 }
 
-PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius)
+PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius, b2BodyType bType, ColliderType ctype)
 {
 	// Create BODY at position x,y
 	b2BodyDef body;
@@ -300,16 +300,17 @@ PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius)
 	pbody->body = b;
 	b->SetUserData(pbody);
 	pbody->width = pbody->height = radius;
+	pbody->cType = ctype;
 
 	// Return our PhysBody class
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height)
+PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height, b2BodyType bType, ColliderType ctype)
 {
 	// Create BODY at position x,y
 	b2BodyDef body;
-	body.type = b2_dynamicBody;
+	body.type = bType;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
 	// Add BODY to the world
@@ -333,12 +334,13 @@ PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height)
 	b->SetUserData(pbody);
 	pbody->width = width * 0.5f;
 	pbody->height = height * 0.5f;
+	pbody->cType = ctype;
 
 	// Return our PhysBody class
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int height)
+PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int height, b2BodyType bType, ColliderType ctype)
 {
 	// Create BODY at position x,y
 	b2BodyDef body;
@@ -367,12 +369,13 @@ PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int heig
 	b->SetUserData(pbody);
 	pbody->width = width;
 	pbody->height = height;
+	pbody->cType = ctype;
 
 	// Return our PhysBody class
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
+PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size, b2BodyType bType, ColliderType ctype)
 {
 	// Create BODY at position x,y
 	b2BodyDef body;
@@ -407,6 +410,7 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
 	pbody->body = b;
 	b->SetUserData(pbody);
 	pbody->width = pbody->height = 0;
+	pbody->cType = ctype;
 
 	// Return our PhysBody class
 	return pbody;
