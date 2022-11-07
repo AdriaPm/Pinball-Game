@@ -12,7 +12,13 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
+	void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB);
 
 public:
+
+private:
+	bool godMode;
+	bool alive;
+	PhysBody* pbody;
 
 };
