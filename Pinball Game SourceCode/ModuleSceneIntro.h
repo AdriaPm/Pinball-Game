@@ -3,8 +3,10 @@
 #include "p2List.h"
 #include "p2Point.h"
 #include "Globals.h"
+#include "Animation.h"
 
 class PhysBody;
+struct SDL_Texture;
 
 class ModuleSceneIntro : public Module
 {
@@ -57,7 +59,11 @@ public:
 	// It will be switched depending on the ITEM movement action
 	Animation* currentAnim;
 
-	//Set of animations
+	//Set of animations ITEM 1
+	Animation flipperDown;
+	Animation flipperUP;
+	
+	//Set of animations ITEM 2
 	Animation idlePlayer;
 	Animation runPlayer;
 	Animation jumpPlayer;

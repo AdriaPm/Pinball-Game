@@ -6,7 +6,6 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
-#include "Animation.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -43,9 +42,11 @@ bool ModuleSceneIntro::Start()
 
 	// Create a big red sensor on the bottom of the screen.
 	// This sensor will not make other objects collide with it, but it can tell if it is "colliding" with something else
-	lower_ground_sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50, b2BodyType::b2_staticBody, ColliderType::WALL);
+	/*lower_ground_sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50, b2BodyType::b2_staticBody, ColliderType::WALL);
+	lower_ground_sensor->listener = this;*/
 
 	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 32, 32, b2BodyType::b2_kinematicBody, ColliderType::WALL);
+	shooter->listener = this;
 
 	//Upper Wall Collider
 	wall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH - 2, -64, b2BodyType::b2_staticBody, ColliderType::WALL);
@@ -55,8 +56,8 @@ bool ModuleSceneIntro::Start()
 
 	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
-	lower_ground_sensor->listener = this;
-	shooter->listener = this;
+	
+	
 
 	return ret;
 }

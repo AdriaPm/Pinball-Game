@@ -94,3 +94,9 @@ Pinball Game SourceCode/Debug/vc142.pdb
 *.pdb
 *.ilk
 *.exe
+*.pdb
+*.log
+*.tlog
+*.vcxproj
+*.filters
+*.obj
