@@ -1,14 +1,9 @@
-﻿  ModulePlayer.cpp
-C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(35,23): warning C4244: '=': conversion from 'float32' to 'TYPE', possible loss of data
-          with
-          [
-              TYPE=int
-          ]
-C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(36,23): warning C4244: '=': conversion from 'float32' to 'TYPE', possible loss of data
-          with
-          [
-              TYPE=int
-          ]
+﻿  ModulePhysics.cpp
+C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(253,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(335,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(336,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(391,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(495,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(496,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(502,27): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
   SDL Game.vcxproj -> C:\Users\adriapm4\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Debug\Box2D - Tutorial.exe

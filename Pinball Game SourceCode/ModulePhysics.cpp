@@ -190,7 +190,7 @@ update_status ModulePhysics::PostUpdate()
 					def.target = mousePosition; // The second body will be pulled towards this location
 					def.dampingRatio = 0.5f; // Play with this value
 					def.frequencyHz = 2.0f; // Play with this value
-					def.maxForce = 200.0f * mouse_body->GetMass(); // Play with this value
+					def.maxForce = 300.0f; // Play with this value
 
 					// Add the new mouse joint into the World
 					mouse_joint = (b2MouseJoint*)world->CreateJoint(&def);

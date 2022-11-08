@@ -65,7 +65,7 @@ update_status ModulePlayer::Update()
 {
 	currentAnim = &idleAnim;
 	
-	velocity = {0, -GRAVITY_Y};
+	velocity.y = -GRAVITY_Y;
 
 	
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
@@ -75,7 +75,7 @@ update_status ModulePlayer::Update()
 	{
 		b2Vec2 impulse = { 10, 10 };
 		
-		pbody->body->ApplyLinearImpulse(impulse,pbody->body->GetWorldCenter(), true);
+		pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
 	}
 
 	
