@@ -45,7 +45,7 @@ bool ModuleSceneIntro::Start()
 	wall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH - 2, -64, b2BodyType::b2_staticBody, ColliderType::WALL);
 
 	//Death Collider
-	through = App->physics->CreateRectangle(64*5 + 32, (SCREEN_HEIGHT-32) + 16, 64*2, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
+	//through = App->physics->CreateRectangle(64*5 + 32, (SCREEN_HEIGHT-32) + 16, 64*2, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
 
 	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
