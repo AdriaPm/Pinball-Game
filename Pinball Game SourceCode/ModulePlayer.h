@@ -20,7 +20,8 @@ public:
 public:
 
 	Animation* currentAnim;
-	Animation ballAnim;
+	Animation idleAnim;
+	Animation rollingAnim;
 
 	iPoint position;
 

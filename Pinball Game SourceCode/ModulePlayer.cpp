@@ -35,14 +35,14 @@ bool ModulePlayer::Start()
 	position.x = startPos.x;
 	position.y = startPos.y;
 
-	ballAnim.PushBack({ 138, 1, 27, 27 });
-	ballAnim.PushBack({ 168, 1, 27, 27 });
-	ballAnim.PushBack({ 199, 1, 27, 27 });
-	ballAnim.PushBack({ 229, 1, 27, 27 });
-	ballAnim.loop = true;
-	ballAnim.speed = 0.1f;
+	idleAnim.PushBack({ 138, 1, 27, 27 });
 
-	currentAnim = &ballAnim;
+	rollingAnim.PushBack({ 138, 1, 27, 27 });
+	rollingAnim.PushBack({ 168, 1, 27, 27 });
+	rollingAnim.PushBack({ 199, 1, 27, 27 });
+	rollingAnim.PushBack({ 229, 1, 27, 27 });
+	rollingAnim.loop = true;
+	rollingAnim.speed = 0.1f;
 
 	//Add physics to the player - initialize physics body
 	pbody = App->physics->CreateCircle(position.x, position.y, 13, b2_dynamicBody, ColliderType::BALL);
@@ -63,18 +63,33 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	currentAnim = &idleAnim;
+	
 	velocity = {0, -GRAVITY_Y};
 
-	pbody->body->SetLinearVelocity(velocity);
+	
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
+		currentAnim = &rollingAnim;
+	
+	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
+	{
+		b2Vec2 impulse = { 10, 10 };
+		
+		pbody->body->ApplyLinearImpulse(impulse,pbody->body->GetWorldCenter(), true);
+	}
 
+	
+	
+	
+	pbody->body->SetLinearVelocity(velocity);
+	
+	/* Link player's texture with pbody when moving */
 	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x - (27 / 2));
-	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y-(27/2));
+	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y - (27 / 2));
 
 	SDL_Rect rect = currentAnim->GetCurrentFrame();
-	App->renderer->Blit(texture, position.x , position.y, &rect);
-	LOG("%d", position.y);
+	App->renderer->Blit(texture, position.x, position.y, &rect);
 	currentAnim->Update();
-
 
 	return UPDATE_CONTINUE;
 }
