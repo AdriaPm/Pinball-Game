@@ -50,7 +50,7 @@ bool ModuleSceneIntro::Start()
 
 	//Upper Wall Collider
 	//wall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH - 2, -64, b2BodyType::b2_staticBody, ColliderType::WALL);
-	int points2[57] = { 64, 512,
+	int points2[59] = { 64, 512,
 					  144, 512,
 					  144, 602,
 					  256, 640,
@@ -68,6 +68,7 @@ bool ModuleSceneIntro::Start()
 					  704, 736,
 					  704, 132,
 					  701, 123, //First curve, first point
+					  697, 112,
 					   681, 93, //Half first curve
 					   667, 85,
 					   650, 80,	//First curve, last point
@@ -78,7 +79,7 @@ bool ModuleSceneIntro::Start()
 					   82, 142,
 					   73, 162,
 					   64, 196 };	//Second curve, last point
-	wall = App->physics->CreateChain(0, 0, points2, 57, b2BodyType::b2_staticBody, ColliderType::WALL);
+	wall = App->physics->CreateChain(0, 0, points2, 59, b2BodyType::b2_staticBody, ColliderType::WALL);
 
 	//Death Collider
 	through = App->physics->CreateRectangleSensor(SCREEN_WIDTH/2 - 32, (SCREEN_HEIGHT-32) + 16, 64*3, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
