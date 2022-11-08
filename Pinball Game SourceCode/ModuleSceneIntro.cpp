@@ -49,10 +49,39 @@ bool ModuleSceneIntro::Start()
 	shooter->listener = this;
 
 	//Upper Wall Collider
-	wall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH - 2, -64, b2BodyType::b2_staticBody, ColliderType::WALL);
+	//wall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH - 2, -64, b2BodyType::b2_staticBody, ColliderType::WALL);
+	int points2[57] = { 64, 512,
+					  144, 512,
+					  144, 602,
+					  256, 640,
+					  256, 767,
+						0, 767,
+						0,	 0,
+					  767,	 0,
+					  767, 767,
+					  448, 767,
+					  448, 640,
+					  560, 602,
+					  560, 512,
+					  671, 512,
+					  671, 736,
+					  704, 736,
+					  704, 132,
+					  701, 123, //First curve, first point
+					   681, 93, //Half first curve
+					   667, 85,
+					   650, 80,	//First curve, last point
+					   192, 80,	//Second curve, First point
+					   153, 86,	
+					   125, 99,	
+					  105, 113,	//Half second curve
+					   82, 142,
+					   73, 162,
+					   64, 196 };	//Second curve, last point
+	wall = App->physics->CreateChain(0, 0, points2, 57, b2BodyType::b2_staticBody, ColliderType::WALL);
 
 	//Death Collider
-	through = App->physics->CreateRectangle(SCREEN_WIDTH/2, (SCREEN_HEIGHT-32) + 16, 64*2, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
+	through = App->physics->CreateRectangleSensor(SCREEN_WIDTH/2 - 32, (SCREEN_HEIGHT-32) + 16, 64*3, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
 
 	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()

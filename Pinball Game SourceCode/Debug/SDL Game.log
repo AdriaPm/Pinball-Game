@@ -1,10 +1,7 @@
-﻿  Application.cpp
+﻿  ModuleSceneIntro.cpp
 C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  ModuleSceneIntro.cpp
-C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(207,45): warning C4244: 'argument': conversion from 'TYPE' to 'TYPE', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(236,45): warning C4244: 'argument': conversion from 'TYPE' to 'TYPE', possible loss of data
           with
           [
               TYPE=int
@@ -13,7 +10,7 @@ C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\M
           [
               TYPE=float
           ]
-C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(207,30): warning C4244: 'argument': conversion from 'TYPE' to 'TYPE', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(236,30): warning C4244: 'argument': conversion from 'TYPE' to 'TYPE', possible loss of data
           with
           [
               TYPE=int
@@ -22,36 +19,35 @@ C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\M
           [
               TYPE=float
           ]
-C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(209,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(212,70): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(238,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(241,70): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
           with
           [
               TYPE=float
           ]
-C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(212,47): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(241,47): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
           with
           [
               TYPE=float
           ]
-C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(216,138): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(245,138): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
           with
           [
               TYPE=float
           ]
-C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(216,96): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(245,96): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
           with
           [
               TYPE=float
           ]
-C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(216,57): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(245,57): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
           with
           [
               TYPE=float
           ]
-C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(216,34): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(245,34): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
           with
           [
               TYPE=float
           ]
-  Generating Code...
   SDL Game.vcxproj -> C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\Debug\Box2D - Tutorial.exe

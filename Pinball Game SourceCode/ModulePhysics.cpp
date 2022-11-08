@@ -40,7 +40,7 @@ bool ModulePhysics::Start()
 	world->SetContactListener(this);
 
 	// Create the main static ground of the scenario: a big circle in the middle of the screen
-	CreateScenarioGround();
+	//CreateScenarioGround();
 
 	// Create a static, shapeless ground body
 	// This will be used to create joints like a mouse joint
@@ -277,7 +277,7 @@ PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius, b2BodyType bType
 {
 	// Create BODY at position x,y
 	b2BodyDef body;
-	body.type = b2_dynamicBody;
+	body.type = bType;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
 	// Add BODY to the world
@@ -344,7 +344,7 @@ PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int heig
 {
 	// Create BODY at position x,y
 	b2BodyDef body;
-	body.type = b2_staticBody;
+	body.type = bType;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
 	// Add BODY to the world
@@ -379,7 +379,7 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size, b2Body
 {
 	// Create BODY at position x,y
 	b2BodyDef body;
-	body.type = b2_dynamicBody;
+	body.type = bType;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
 	// Add BODY to the world
