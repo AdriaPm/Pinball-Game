@@ -79,3 +79,18 @@ ipch/
 *.db
 *.opendb
 packages/
+Pinball Game SourceCode/Debug/vc142.pdb
+Pinball Game SourceCode/Debug/vc142.pdb
+Pinball Game SourceCode/Debug/vc142.pdb
+Pinball Game SourceCode/Debug/vc142.pdb
+Pinball Game SourceCode/Debug/vc142.pdb
+*.idb
+*.pdb
+*.log
+*.obj
+*.obj
+*.obj
+*.tlog
+*.pdb
+*.ilk
+*.exe

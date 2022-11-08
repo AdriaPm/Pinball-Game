@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
+#include "Animation.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -14,6 +15,10 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 	circle = box = rick = NULL;
 	ray_on = false;
 	sensed = false;
+
+	//Init Animations
+
+
 }
 
 ModuleSceneIntro::~ModuleSceneIntro()
@@ -30,6 +35,7 @@ bool ModuleSceneIntro::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
 	// Load textures
+	scene = App->textures->Load("Assets/Textures/Pinball_Scene.png");
 	circle = App->textures->Load("pinball/wheel.png"); 
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
@@ -45,7 +51,7 @@ bool ModuleSceneIntro::Start()
 	wall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH - 2, -64, b2BodyType::b2_staticBody, ColliderType::WALL);
 
 	//Death Collider
-	//through = App->physics->CreateRectangle(64*5 + 32, (SCREEN_HEIGHT-32) + 16, 64*2, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
+	through = App->physics->CreateRectangle(SCREEN_WIDTH/2, (SCREEN_HEIGHT-32) + 16, 64*2, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
 
 	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
@@ -208,6 +214,8 @@ update_status ModuleSceneIntro::Update()
 		if(normal.x != 0.0f)
 			App->renderer->DrawLine(ray.x + destination.x, ray.y + destination.y, ray.x + destination.x + normal.x * 25.0f, ray.y + destination.y + normal.y * 25.0f, 100, 255, 100);
 	}
+
+	App->renderer->Blit(scene, 0, 0, NULL);
 
 	// Keep playing
 	return UPDATE_CONTINUE;

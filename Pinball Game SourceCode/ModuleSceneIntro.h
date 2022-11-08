@@ -41,6 +41,7 @@ public:
 	bool sensed;
 
 	// Textures
+	SDL_Texture* scene;
 	SDL_Texture* circle;
 	SDL_Texture* box;
 	SDL_Texture* rick;
@@ -51,4 +52,15 @@ public:
 	// Raycast
 	p2Point<int> ray;
 	bool ray_on;
+
+	// The pointer to the current ITEM animation --> Create more if there are more than 1 Animated Item
+	// It will be switched depending on the ITEM movement action
+	Animation* currentAnim;
+
+	//Set of animations
+	Animation idlePlayer;
+	Animation runPlayer;
+	Animation jumpPlayer;
+	Animation diePlayer;
+
 };
