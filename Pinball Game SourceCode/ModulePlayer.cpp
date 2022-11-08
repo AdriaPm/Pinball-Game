@@ -63,6 +63,12 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	velocity = {0, -GRAVITY_Y};
+
+	pbody->body->SetLinearVelocity(velocity);
+
+	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x - (27 / 2));
+	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y-(27/2));
 
 	SDL_Rect rect = currentAnim->GetCurrentFrame();
 	App->renderer->Blit(texture, position.x , position.y, &rect);
