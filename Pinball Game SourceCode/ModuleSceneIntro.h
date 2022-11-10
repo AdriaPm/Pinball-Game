@@ -38,6 +38,10 @@ public:
 	//Death Sensor
 	PhysBody* through;
 
+	PhysBody* points100_1;
+	PhysBody* points100_2;
+	
+	PhysBody* points200;
 
 	PhysBody* wall;
 	bool sensed;

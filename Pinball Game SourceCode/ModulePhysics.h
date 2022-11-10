@@ -21,6 +21,8 @@ enum class ColliderType {
 	SLINGSHOT, //Triangle that bounces
 	ROLLOVER, //Let pass or not the ball if a bool is active
 	THROUGH,
+	_100PTS,
+	_200PTS,
 	UNKNOWN
 };
 

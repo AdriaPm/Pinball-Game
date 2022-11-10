@@ -48,6 +48,7 @@ bool ModuleSceneIntro::Start()
 	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 32, 32, b2BodyType::b2_kinematicBody, ColliderType::WALL);
 	shooter->listener = this;
 
+	/* COLLIDERS */
 	//Upper Wall Collider
 	//wall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH - 2, -64, b2BodyType::b2_staticBody, ColliderType::WALL);
 	int points2[59] = { 64, 512,
@@ -84,11 +85,18 @@ bool ModuleSceneIntro::Start()
 	//Death Collider
 	through = App->physics->CreateRectangleSensor(SCREEN_WIDTH/2 - 32, (SCREEN_HEIGHT-32) + 16, 64*3, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
 
+	//100 points Collider
+	points100_1 = App->physics->CreateCircle(298, 244, 14, b2BodyType::b2_staticBody, ColliderType::_100PTS);
+	points100_2 = App->physics->CreateCircle(405, 244, 14, b2BodyType::b2_staticBody, ColliderType::_100PTS);
+
+	//200 points Collider
+	points200 = App->physics->CreateCircle(352, 217, 14, b2BodyType::b2_staticBody, ColliderType::_200PTS);
+
+
+
 	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
 	
-	
-
 	return ret;
 }
 
