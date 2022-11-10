@@ -96,27 +96,39 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 {
-	/*switch (physB->ctype)
+	/*switch (physB->cType)
 	{
 	case ColliderType::WALL:
 		LOG("Collision WALL");
 		break;
 	case ColliderType::PADDEL:
-		LOG("Collision GROUND");
+		LOG("Collision PADDLE");
 		break;
-	case ColliderType::DEATH:
-		LOG("Collision DEATH");
+	case ColliderType::THROUGH:
+		LOG("Collision THROUGH");
 		alive = false;
 		break;
-	case ColliderType::BUMPERS:
-		LOG("Collision UNKNOWN");
+	case ColliderType::BUMPER:
+		LOG("Collision BUMPER");
 		break;
 	case ColliderType::SLINGSHOT:
+		LOG("Collision SLINGSHOT");
+		break;
+	case ColliderType::BONUS:
+		LOG("Collision BONUS");
+		break;
+	case ColliderType::_100PTS:
+		LOG("Collision 100pts");
+		break;
+	case ColliderType::_200PTS:
+		LOG("Collision 200pts");
+		break;
+	case ColliderType::ROLLOVER:
+		LOG("Collision ROLLOVER");
+		break;
+	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
 		break;
-	case ColliderType::SLINGSHOT:
-	LOG("Collision UNKNOWN");
-	break;
 	}*/
 
 }
