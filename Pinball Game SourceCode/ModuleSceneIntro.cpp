@@ -99,6 +99,117 @@ bool ModuleSceneIntro::Start()
 	App->physics->CreateCircle(464, 471, 14, b2BodyType::b2_staticBody, ColliderType::BUMPER);
 	App->physics->CreateCircle(352, 527, 14, b2BodyType::b2_staticBody, ColliderType::BUMPER);
 
+	//Center map wall
+	int points3[12] = { 351, 264,
+					  288, 327,
+					  288, 366,
+					  351, 429,
+					  414, 366,
+					  414, 327 };
+	wall = App->physics->CreateChain(0, 0, points3, 12, b2BodyType::b2_staticBody, ColliderType::WALL);
+	
+	//Down-Left curved wall
+	int points4[46] = { 112, 296,
+					 112, 345,
+					 114, 353,
+					 117, 363,
+					 120, 372,
+					 124, 378,
+					 130, 384,
+					 138, 391,
+					 144, 397,
+					 155, 402,
+					 166, 405,
+					 173, 407,
+					 190, 408,
+					 190, 393,
+					 174, 393,
+					 165, 390,
+					 157, 386,
+					 148, 380,
+					 140, 372,
+					 132, 361,
+					 128, 351,
+					 126, 342,
+					 126, 296 };
+	wall = App->physics->CreateChain(0, 0, points4, 46, b2BodyType::b2_staticBody, ColliderType::WALL);
+
+	//Down-Right curved wall
+	int points5[44] = { 577, 297,
+					  577, 346,
+					  574, 353,
+					  571, 361,
+					  564, 371,
+					  559, 377,
+					  553, 382,
+					  544, 388,
+					  535, 392,
+					  526, 395,
+					  514, 395,
+					  514, 408,
+					  530, 408,
+					  541, 405,
+					  554, 400,
+					  565, 393,
+					  574, 385,
+					  581, 376,
+					  586, 366,
+					  589, 356,
+					  592, 346,
+					  592, 297 };
+	wall = App->physics->CreateChain(0, 0, points5, 44, b2BodyType::b2_staticBody, ColliderType::WALL);
+
+	//Up-Right curved wall
+	int points6[46] = { 311, 177,
+					  295, 177,
+					  285, 179,
+					  274, 183,
+					  265, 187,
+					  260, 192,
+					  253, 198,
+					  247, 205,
+					  241, 216,
+					  238, 225,
+					  234, 238,
+					  234, 287,
+					  248, 287,
+					  248, 240,
+					  250, 232,
+					  254, 223,
+					  260, 215,
+					  265, 209,
+					  271, 203,
+					  282, 197,
+					  290, 193,
+					  298, 190,
+					  311, 190 };
+	wall = App->physics->CreateChain(0, 0, points6, 46, b2BodyType::b2_staticBody, ColliderType::WALL);
+
+	//Up-Right curved wall
+	int points7[44] = { 393, 177,
+					  393, 190,
+					  407, 191,
+					  415, 193,
+					  422, 196,
+					  430, 201,
+					  436, 207,
+					  444, 214,
+					  450, 224,
+					  454, 232,
+					  456, 243,
+					  456, 286,
+					  470, 286,
+					  470, 238,
+					  467, 225,
+					  463, 215,
+					  458, 206,
+					  451, 198,
+					  442, 189,
+					  429, 183,
+					  420, 180,
+					  409, 177 };
+	wall = App->physics->CreateChain(0, 0, points7, 44, b2BodyType::b2_staticBody, ColliderType::WALL);
+
 
 
 	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.

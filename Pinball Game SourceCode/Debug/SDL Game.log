@@ -1,31 +1,7 @@
-﻿  Application.cpp
+﻿  ModuleSceneIntro.cpp
 C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
 C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-  ModulePhysics.cpp
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(253,8): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(335,23): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(336,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(391,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(495,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(496,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(502,27): warning C4244: 'return': conversión de 'float32' a 'int'; posible pérdida de datos
-  ModulePlayer.cpp
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(35,23): warning C4244: '=': conversión de 'float32' a 'TYPE'; posible pérdida de datos
-          with
-          [
-              TYPE=int
-          ]
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(36,23): warning C4244: '=': conversión de 'float32' a 'TYPE'; posible pérdida de datos
-          with
-          [
-              TYPE=int
-          ]
-  ModuleSceneIntro.cpp
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(252,45): warning C4244: 'argumento': conversión de 'TYPE' a 'TYPE'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(363,45): warning C4244: 'argumento': conversión de 'TYPE' a 'TYPE'; posible pérdida de datos
           with
           [
               TYPE=int
@@ -34,7 +10,7 @@ C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleScene
           [
               TYPE=float
           ]
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(252,30): warning C4244: 'argumento': conversión de 'TYPE' a 'TYPE'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(363,30): warning C4244: 'argumento': conversión de 'TYPE' a 'TYPE'; posible pérdida de datos
           with
           [
               TYPE=int
@@ -43,36 +19,35 @@ C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleScene
           [
               TYPE=float
           ]
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(254,18): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(257,70): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(365,18): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(368,70): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
           with
           [
               TYPE=float
           ]
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(257,47): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(368,47): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
           with
           [
               TYPE=float
           ]
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(261,138): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(372,138): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
           with
           [
               TYPE=float
           ]
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(261,96): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(372,96): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
           with
           [
               TYPE=float
           ]
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(261,57): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(372,57): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
           with
           [
               TYPE=float
           ]
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(261,34): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(372,34): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
           with
           [
               TYPE=float
           ]
-  Generando código...
   SDL Game.vcxproj -> C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Debug\Box2D - Tutorial.exe
