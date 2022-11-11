@@ -341,12 +341,13 @@ PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height, b2
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int height, b2BodyType bType, ColliderType ctype)
+PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int height, b2BodyType bType, ColliderType ctype, float angle)
 {
 	// Create BODY at position x,y
 	b2BodyDef body;
 	body.type = bType;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+	body.angle = angle;
 
 	// Add BODY to the world
 	b2Body* b = world->CreateBody(&body);
