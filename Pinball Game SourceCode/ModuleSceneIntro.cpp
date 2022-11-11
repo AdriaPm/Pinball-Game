@@ -53,8 +53,8 @@ bool ModuleSceneIntro::Start()
 	b2RevoluteJoint* flipperJoint_right;
 
 	//Flippers' colliders
-	leftFlipper = App->physics->CreateRectangle(266+35, 672+5, 70, 10, b2BodyType::b2_dynamicBody, ColliderType::FLIPPER);
-	rightFlipper = App->physics->CreateRectangle(338+65, 672+5, 70, 10, b2BodyType::b2_dynamicBody, ColliderType::FLIPPER);
+	leftFlipper = App->physics->CreateRectangle(266+40, 672+5, 80, 10, b2BodyType::b2_dynamicBody, ColliderType::FLIPPER);
+	rightFlipper = App->physics->CreateRectangle(338+61, 672+5, 80, 10, b2BodyType::b2_dynamicBody, ColliderType::FLIPPER);
 
 	//Flipper's joints colliders
 	leftFlipperJoint = App->physics->CreateCircle(248, 679, 3, b2BodyType::b2_staticBody, ColliderType::UNKNOWN);

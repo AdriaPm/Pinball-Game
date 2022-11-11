@@ -77,14 +77,14 @@ update_status ModulePlayer::Update()
 		pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
 	}
 
-	//Flippers
+	//Flippers' input
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		App->scene_intro->rightFlipper->body->ApplyTorque(80.0f, true);
+		App->scene_intro->rightFlipper->body->ApplyTorque(50.0f, true);
 	else
 		App->scene_intro->rightFlipper->body->ApplyTorque(-15.0f, true);
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		App->scene_intro->leftFlipper->body->ApplyTorque(-80.0f, true);
+		App->scene_intro->leftFlipper->body->ApplyTorque(-50.0f, true);
 	else
 		App->scene_intro->leftFlipper->body->ApplyTorque(15.0f, true);
 
