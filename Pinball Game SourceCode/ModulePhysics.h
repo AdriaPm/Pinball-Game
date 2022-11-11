@@ -66,7 +66,7 @@ public:
 
 	// Create basic physics objects
 	PhysBody* CreateCircle(int x, int y, int radius, b2BodyType bType, ColliderType ctype);
-	PhysBody* CreateRectangle(int x, int y, int width, int height, b2BodyType bType, ColliderType ctype);
+	PhysBody* CreateRectangle(int x, int y, int width, int height, b2BodyType bType, ColliderType ctype, float angle = 0.0f);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, b2BodyType bType, ColliderType ctype);
 	PhysBody* CreateChain(int x, int y, int* points, int size, b2BodyType bType, ColliderType ctype);
 

@@ -291,7 +291,6 @@ PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius, b2BodyType bType
 	b2FixtureDef fixture;
 	fixture.shape = &shape;
 	fixture.density = 1.0f;
-	//fixture.friction = 0.01f;
 
 	// Add fixture to the BODY
 	b->CreateFixture(&fixture);
@@ -307,12 +306,13 @@ PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius, b2BodyType bType
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height, b2BodyType bType, ColliderType ctype)
+PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height, b2BodyType bType, ColliderType ctype, float angle)
 {
 	// Create BODY at position x,y
 	b2BodyDef body;
 	body.type = bType;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+	body.angle = angle;
 
 	// Add BODY to the world
 	b2Body* b = world->CreateBody(&body);
