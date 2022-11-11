@@ -72,7 +72,7 @@ update_status ModulePlayer::Update()
 	
 	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
 	{
-		b2Vec2 impulse = { 0, -3 };
+		b2Vec2 impulse = { 0, -1 };
 		
 		pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
 	}
@@ -90,7 +90,7 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 {
-	/*switch (physB->cType)
+	switch (physB->cType)
 	{
 	case ColliderType::WALL:
 		LOG("Collision WALL");
@@ -100,7 +100,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		break;
 	case ColliderType::THROUGH:
 		LOG("Collision THROUGH");
-		alive = false;
+		lives--;
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
@@ -113,9 +113,13 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		break;
 	case ColliderType::_100PTS:
 		LOG("Collision 100pts");
+		score += 100;
+		highscore += 100;
 		break;
 	case ColliderType::_200PTS:
 		LOG("Collision 200pts");
+		score += 200;
+		highscore += 200 ;
 		break;
 	case ColliderType::ROLLOVER:
 		LOG("Collision ROLLOVER");
@@ -123,7 +127,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
 		break;
-	}*/
+	}
 
 }
 
