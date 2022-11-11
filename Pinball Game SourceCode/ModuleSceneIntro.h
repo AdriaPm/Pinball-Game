@@ -73,4 +73,6 @@ public:
 	Animation jumpPlayer;
 	Animation diePlayer;
 
+	float force;
+
 };

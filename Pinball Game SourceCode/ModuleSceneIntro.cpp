@@ -45,7 +45,7 @@ bool ModuleSceneIntro::Start()
 	/*lower_ground_sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50, b2BodyType::b2_staticBody, ColliderType::WALL);
 	lower_ground_sensor->listener = this;*/
 
-	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 32, 32, b2BodyType::b2_kinematicBody, ColliderType::WALL);
+	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 50, 28, 16, b2BodyType::b2_kinematicBody, ColliderType::WALL);
 	shooter->listener = this;
 
 	/* COLLIDERS */

@@ -72,11 +72,11 @@ update_status ModulePlayer::Update()
 	
 	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
 	{
-		b2Vec2 impulse = { 0, -.5 };
+		b2Vec2 impulse = { 0, -3 };
 		
 		pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
 	}
-	
+
 	/* Link player's texture with pbody when moving */
 	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x - (27 / 2));
 	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y - (27 / 2));

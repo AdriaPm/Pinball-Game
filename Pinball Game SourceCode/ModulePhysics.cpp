@@ -290,8 +290,8 @@ PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius, b2BodyType bType
 	// Create FIXTURE
 	b2FixtureDef fixture;
 	fixture.shape = &shape;
-	fixture.density = 1.0f/2000;
-	fixture.friction = 0.01f;
+	fixture.density = 1.0f;
+	//fixture.friction = 0.01f;
 
 	// Add fixture to the BODY
 	b->CreateFixture(&fixture);
