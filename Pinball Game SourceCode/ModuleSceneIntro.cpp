@@ -11,7 +11,7 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 {
 
 	// Initialise all the internal class variables, at least to NULL pointer
-	circle = box = rick = NULL;
+	//circle = box = rick = NULL;
 	ray_on = false;
 	sensed = false;
 
@@ -34,10 +34,11 @@ bool ModuleSceneIntro::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
 	// Load textures
+	leftFlipperTex = App->textures->Load("Assets/Textures/leftFlipper.png");
+	rightFlipperTex = App->textures->Load("Assets/Textures/rightFlipper.png");
 	scene = App->textures->Load("Assets/Textures/Pinball_Scene.png");
-	circle = App->textures->Load("pinball/wheel.png"); 
-	box = App->textures->Load("pinball/crate.png");
-	rick = App->textures->Load("pinball/rick_head.png");
+
+	//Load SFX
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
 
 	// Create a big red sensor on the bottom of the screen.
@@ -45,7 +46,7 @@ bool ModuleSceneIntro::Start()
 	/*lower_ground_sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50, b2BodyType::b2_staticBody, ColliderType::WALL);
 	lower_ground_sensor->listener = this;*/
 
-	//Flippers' joints
+	//Flippers creation
 	b2RevoluteJointDef flipperJointDef_left;
 	b2RevoluteJointDef flipperJointDef_right;
 
@@ -53,8 +54,8 @@ bool ModuleSceneIntro::Start()
 	b2RevoluteJoint* flipperJoint_right;
 
 	//Flippers' colliders
-	leftFlipper = App->physics->CreateRectangle(266+40, 672+5, 80, 10, b2BodyType::b2_dynamicBody, ColliderType::FLIPPER);
-	rightFlipper = App->physics->CreateRectangle(338+61, 672+5, 80, 10, b2BodyType::b2_dynamicBody, ColliderType::FLIPPER);
+	leftFlipper = App->physics->CreateRectangle(266+35, 672+10, 75, 20, b2BodyType::b2_dynamicBody, ColliderType::FLIPPER);
+	rightFlipper = App->physics->CreateRectangle(338+65, 672+10, 75, 20, b2BodyType::b2_dynamicBody, ColliderType::FLIPPER);
 
 	//Flipper's joints colliders
 	leftFlipperJoint = App->physics->CreateCircle(248, 679, 3, b2BodyType::b2_staticBody, ColliderType::UNKNOWN);
@@ -73,6 +74,7 @@ bool ModuleSceneIntro::Start()
 
 	flipperJoint_left = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipperJointDef_left);
 	flipperJoint_right = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipperJointDef_right);
+
 
 
 	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 50, 28, 16, b2BodyType::b2_kinematicBody, ColliderType::WALL);
@@ -116,11 +118,11 @@ bool ModuleSceneIntro::Start()
 	through = App->physics->CreateRectangleSensor(SCREEN_WIDTH/2 - 32, (SCREEN_HEIGHT-32) + 16, 64*3, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
 
 	//100 points Collider
-	points100_1 = App->physics->CreateCircle(298, 244, 14, b2BodyType::b2_staticBody, ColliderType::_100PTS);
-	points100_2 = App->physics->CreateCircle(405, 244, 14, b2BodyType::b2_staticBody, ColliderType::_100PTS);
+	App->physics->CreateCircle(298, 244, 14, b2BodyType::b2_staticBody, ColliderType::_100PTS);
+	App->physics->CreateCircle(405, 244, 14, b2BodyType::b2_staticBody, ColliderType::_100PTS);
 
 	//200 points Collider
-	points200 = App->physics->CreateCircle(352, 217, 14, b2BodyType::b2_staticBody, ColliderType::_200PTS);
+	App->physics->CreateCircle(352, 217, 14, b2BodyType::b2_staticBody, ColliderType::_200PTS);
 
 	//Bumpers Colliders
 	App->physics->CreateCircle(197, 332, 14, b2BodyType::b2_staticBody, ColliderType::BUMPER);
@@ -275,11 +277,17 @@ bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
 
+	App->textures->Unload(scene);
+	App->textures->Unload(leftFlipperTex);
+	App->textures->Unload(rightFlipperTex);
+
 	return true;
 }
 
 update_status ModuleSceneIntro::Update()
 {
+	App->renderer->Blit(scene, 0, 0, NULL);
+
 	shooter->body->SetAngularVelocity(5);
 
 	// If user presses SPACE, enable RayCast
@@ -366,6 +374,7 @@ update_status ModuleSceneIntro::Update()
 
 	// All draw functions ------------------------------------------------------
 
+	/*
 	// Circles
 	p2List_item<PhysBody*>* c = circles.getFirst();
 	while(c != NULL)
@@ -426,8 +435,21 @@ update_status ModuleSceneIntro::Update()
 		if(normal.x != 0.0f)
 			App->renderer->DrawLine(ray.x + destination.x, ray.y + destination.y, ray.x + destination.x + normal.x * 25.0f, ray.y + destination.y + normal.y * 25.0f, 100, 255, 100);
 	}
+	*/
 
-	App->renderer->Blit(scene, 0, 0, NULL);
+	//Blit flippers
+	if (leftFlipper != NULL)
+	{
+		int x, y;
+		leftFlipper->GetPosition(x, y);
+		App->renderer->Blit(leftFlipperTex, x, y, NULL, 0.2f, leftFlipper->GetRotation());
+	}
+	if (rightFlipper != NULL)
+	{
+		int x, y;
+		rightFlipper->GetPosition(x, y);
+		App->renderer->Blit(rightFlipperTex, x, y, NULL, 0.2f, rightFlipper->GetRotation());
+	}
 
 	// Keep playing
 	return UPDATE_CONTINUE;

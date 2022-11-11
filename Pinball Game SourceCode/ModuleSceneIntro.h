@@ -38,11 +38,6 @@ public:
 	//Death Sensor
 	PhysBody* through;
 
-	PhysBody* points100_1;
-	PhysBody* points100_2;
-	
-	PhysBody* points200;
-
 	PhysBody* leftFlipper;
 	PhysBody* rightFlipper;
 
@@ -54,9 +49,9 @@ public:
 
 	// Textures
 	SDL_Texture* scene;
-	SDL_Texture* circle;
-	SDL_Texture* box;
-	SDL_Texture* rick;
+	SDL_Texture* leftFlipperTex;
+	SDL_Texture* rightFlipperTex;
+	
 
 	// FX
 	uint bonus_fx;
