@@ -45,6 +45,36 @@ bool ModuleSceneIntro::Start()
 	/*lower_ground_sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50, b2BodyType::b2_staticBody, ColliderType::WALL);
 	lower_ground_sensor->listener = this;*/
 
+	//Flippers' joints
+	b2RevoluteJointDef flipperJointDef_left;
+	b2RevoluteJointDef flipperJointDef_right;
+
+	b2RevoluteJoint* flipperJoint_left;
+	b2RevoluteJoint* flipperJoint_right;
+
+	//Flippers' colliders
+	leftFlipper = App->physics->CreateRectangle(266+35, 672+5, 70, 10, b2BodyType::b2_dynamicBody, ColliderType::FLIPPER);
+	rightFlipper = App->physics->CreateRectangle(338+65, 672+5, 70, 10, b2BodyType::b2_dynamicBody, ColliderType::FLIPPER);
+
+	//Flipper's joints colliders
+	leftFlipperJoint = App->physics->CreateCircle(248, 679, 3, b2BodyType::b2_staticBody, ColliderType::UNKNOWN);
+	rightFlipperJoint = App->physics->CreateCircle(456, 679, 3, b2BodyType::b2_staticBody, ColliderType::UNKNOWN);
+	
+	flipperJointDef_left.Initialize(leftFlipper->body, leftFlipperJoint->body, leftFlipperJoint->body->GetWorldCenter());
+	flipperJointDef_right.Initialize(rightFlipper->body, rightFlipperJoint->body, rightFlipperJoint->body->GetWorldCenter());
+
+	flipperJointDef_left.lowerAngle = -0.2f * b2_pi;
+	flipperJointDef_left.upperAngle = 0.2f * b2_pi;
+	flipperJointDef_right.lowerAngle = -0.2f * b2_pi;
+	flipperJointDef_right.upperAngle = 0.2f * b2_pi;
+	
+	flipperJointDef_left.enableLimit = true;
+	flipperJointDef_right.enableLimit = true;
+
+	flipperJoint_left = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipperJointDef_left);
+	flipperJoint_right = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipperJointDef_right);
+
+
 	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 50, 28, 16, b2BodyType::b2_kinematicBody, ColliderType::WALL);
 	shooter->listener = this;
 

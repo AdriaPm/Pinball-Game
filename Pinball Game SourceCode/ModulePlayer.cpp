@@ -77,6 +77,21 @@ update_status ModulePlayer::Update()
 		pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
 	}
 
+	//Flippers
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+		App->scene_intro->rightFlipper->body->ApplyTorque(80.0f, true);
+	else
+		App->scene_intro->rightFlipper->body->ApplyTorque(-15.0f, true);
+
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+		App->scene_intro->leftFlipper->body->ApplyTorque(-80.0f, true);
+	else
+		App->scene_intro->leftFlipper->body->ApplyTorque(15.0f, true);
+
+
+
+
+
 	/* Link player's texture with pbody when moving */
 	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x - (27 / 2));
 	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y - (27 / 2));
@@ -95,8 +110,8 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 	case ColliderType::WALL:
 		LOG("Collision WALL");
 		break;
-	case ColliderType::PADDEL:
-		LOG("Collision PADDLE");
+	case ColliderType::FLIPPER:
+		LOG("Collision FLIPPER");
 		break;
 	case ColliderType::THROUGH:
 		LOG("Collision THROUGH");

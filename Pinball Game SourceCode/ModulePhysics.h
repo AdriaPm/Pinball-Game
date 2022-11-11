@@ -17,7 +17,7 @@ enum class ColliderType {
 	BALL,
 	WALL,
 	BONUS,
-	PADDEL, // Ball hitter
+	FLIPPER, // Ball hitter
 	BUMPER, //Circle that makes bounce
 	SLINGSHOT, //Triangle that bounces
 	ROLLOVER, //Let pass or not the ball if a bool is active
@@ -88,4 +88,7 @@ private:
 	// Mouse joint
 	b2MouseJoint* mouse_joint;
 	b2Body* mouse_body;
+
+	b2Body* box1;
+	b2Body* box2;
 };

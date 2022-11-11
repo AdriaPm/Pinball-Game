@@ -43,6 +43,12 @@ public:
 	
 	PhysBody* points200;
 
+	PhysBody* leftFlipper;
+	PhysBody* rightFlipper;
+
+	PhysBody* leftFlipperJoint;
+	PhysBody* rightFlipperJoint;
+
 	PhysBody* wall;
 	bool sensed;
 
