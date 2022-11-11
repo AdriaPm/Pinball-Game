@@ -25,11 +25,12 @@ public:
 
 	iPoint position;
 
+	PhysBody* pbody;
+
 private:
 
 	bool godMode;
 	bool alive;
-	PhysBody* pbody;
 
 	SDL_Texture* texture;
 	const char* texturePath;

@@ -42,12 +42,14 @@ bool ModulePlayer::Start()
 	rollingAnim.PushBack({ 199, 1, 27, 27 });
 	rollingAnim.PushBack({ 229, 1, 27, 27 });
 	rollingAnim.loop = true;
-	rollingAnim.speed = 0.1f;
+	rollingAnim.speed = 0.4f;
 
 	//Add physics to the player - initialize physics body
 	pbody = App->physics->CreateCircle(position.x, position.y, 13, b2_dynamicBody, ColliderType::BALL);
 	pbody->listener = this;
 
+	velocity.y = -GRAVITY_Y;
+	pbody->body->SetLinearVelocity(velocity);
 
 	return true;
 }
@@ -65,23 +67,15 @@ update_status ModulePlayer::Update()
 {
 	currentAnim = &idleAnim;
 	
-	velocity.y = -GRAVITY_Y;
-
-	
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
 		currentAnim = &rollingAnim;
 	
 	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
 	{
-		b2Vec2 impulse = { 10, 10 };
+		b2Vec2 impulse = { 0, -.5 };
 		
 		pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
 	}
-
-	
-	
-	
-	pbody->body->SetLinearVelocity(velocity);
 	
 	/* Link player's texture with pbody when moving */
 	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x - (27 / 2));
