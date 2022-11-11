@@ -1,14 +1,85 @@
-﻿  ModulePlayer.cpp
-C:\Users\arnaujg\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\arnaujg\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\arnaujg\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(35,23): warning C4244: '=': conversion from 'float32' to 'TYPE', possible loss of data
+﻿  Application.cpp
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  Main.cpp
+  ModuleAudio.cpp
+  ModuleInput.cpp
+  ModulePhysics.cpp
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(253,8): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(336,23): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(337,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(393,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(497,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(498,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(504,27): warning C4244: 'return': conversión de 'float32' a 'int'; posible pérdida de datos
+  ModulePlayer.cpp
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(35,23): warning C4244: '=': conversión de 'float32' a 'TYPE'; posible pérdida de datos
           with
           [
               TYPE=int
           ]
-C:\Users\arnaujg\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(36,23): warning C4244: '=': conversion from 'float32' to 'TYPE', possible loss of data
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(36,23): warning C4244: '=': conversión de 'float32' a 'TYPE'; posible pérdida de datos
           with
           [
               TYPE=int
           ]
-  SDL Game.vcxproj -> C:\Users\arnaujg\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Debug\Box2D - Tutorial.exe
+  ModuleRender.cpp
+  ModuleSceneIntro.cpp
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(365,45): warning C4244: 'argumento': conversión de 'TYPE' a 'TYPE'; posible pérdida de datos
+          with
+          [
+              TYPE=int
+          ]
+          and
+          [
+              TYPE=float
+          ]
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(365,30): warning C4244: 'argumento': conversión de 'TYPE' a 'TYPE'; posible pérdida de datos
+          with
+          [
+              TYPE=int
+          ]
+          and
+          [
+              TYPE=float
+          ]
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(367,18): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(370,70): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(370,47): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(374,138): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(374,96): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(374,57): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModuleSceneIntro.cpp(374,34): warning C4244: 'argumento': conversión de 'TYPE' a 'int'; posible pérdida de datos
+          with
+          [
+              TYPE=float
+          ]
+  ModuleTextures.cpp
+  ModuleWindow.cpp
+  log.cpp
+  Generando código...
+  SDL Game.vcxproj -> C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Debug\Box2D - Tutorial.exe

@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "Application.h"
 #include "Globals.h"
+#include "ModuleRender.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
@@ -25,6 +26,7 @@ int main(int argc, char ** argv)
 
 	while (state != MAIN_EXIT)
 	{
+		int start = SDL_GetTicks();
 		switch (state)
 		{
 		case MAIN_CREATION:
@@ -53,6 +55,10 @@ int main(int argc, char ** argv)
 		case MAIN_UPDATE:
 		{
 			int update_return = App->Update();
+
+			if (App->renderer->limitFPS == false && ((SDL_GetTicks() - start) < (1000 / 60))) {
+				SDL_Delay((1000 / 60) - (SDL_GetTicks() - start));
+			}
 
 			if (update_return == UPDATE_ERROR)
 			{
