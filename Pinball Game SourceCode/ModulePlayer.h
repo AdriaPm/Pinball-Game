@@ -17,6 +17,10 @@ public:
 	bool CleanUp();
 	void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB);
 
+	int GetScore() { return score; }
+	int GetHighScore() { return highscore; }
+	int GetLives() { return lives; }
+
 public:
 
 	Animation* currentAnim;
@@ -31,10 +35,11 @@ public:
 	uint bonus_sfx;
 	uint bumper_sfx;
 
+	bool alive;
 private:
 
 	bool godMode;
-	bool alive;
+	
 
 	SDL_Texture* texture;
 	const char* texturePath;

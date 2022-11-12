@@ -1,9 +1,10 @@
-#include "Globals.h"
 #include "Application.h"
+
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleFonts.h"
-#include <string.h>
+
+#include<string.h>
 
 #include "SDL/include/SDL.h"
 
@@ -16,6 +17,8 @@ ModuleFonts::~ModuleFonts()
 {}
 
 bool ModuleFonts::Start() {
+
+
 
 	return true;
 }
