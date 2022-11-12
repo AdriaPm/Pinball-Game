@@ -157,7 +157,7 @@ update_status ModulePhysics::PostUpdate()
 
 			// TODO 1: If mouse button 1 is pressed ...
 			// App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN
-			if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN)
+			if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN && debug == true)
 			{
 				// test if the current body contains mouse position
 				b2Vec2 p = { PIXEL_TO_METERS(App->input->GetMouseX()), PIXEL_TO_METERS(App->input->GetMouseY()) };

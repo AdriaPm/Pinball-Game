@@ -28,5 +28,6 @@ enum update_status
 #define WIN_RESIZABLE false
 #define WIN_BORDERLESS false
 #define WIN_FULLSCREEN_DESKTOP false
-#define VSYNC false		//If it is FALSE game is limited to 60fps, if is TRUE it uses screen refresh rate		
+#define VSYNC false		//If it is FALSE game is limited to 60fps, if is TRUE it uses screen refresh rate	
+#define FPS 60	//Change this value to set the FPS as you want
 #define TITLE "CITM | Physics II | PINBALL GAME"

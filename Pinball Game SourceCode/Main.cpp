@@ -56,8 +56,8 @@ int main(int argc, char ** argv)
 		{
 			int update_return = App->Update();
 
-			if (App->renderer->limitFPS == false && ((SDL_GetTicks() - start) < (1000 / 60))) {
-				SDL_Delay((1000 / 60) - (SDL_GetTicks() - start));
+			if (App->renderer->limitFPS == false && ((SDL_GetTicks() - start) < (1000 / FPS))) {
+				SDL_Delay((1000 / FPS) - (SDL_GetTicks() - start));
 			}
 
 			if (update_return == UPDATE_ERROR)

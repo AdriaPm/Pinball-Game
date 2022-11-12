@@ -29,6 +29,9 @@ bool ModulePlayer::Start()
 	texturePath = ("Assets/Textures/sprite_sheet.png");
 	texture = App->textures->Load(texturePath);
 
+	flipper_sfx = App->audio->LoadFx("Assets/Audio/FX/flipper.wav");
+	bonus_sfx = App->audio->LoadFx("Assets/Audio/FX/bonus.wav");
+
 	startPos.x = 689;
 	startPos.y = 591;
 	
@@ -79,17 +82,20 @@ update_status ModulePlayer::Update()
 
 	//Flippers' input
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		App->scene_intro->rightFlipper->body->ApplyTorque(65.0f, true);
+	{
+		App->scene_intro->rightFlipper->body->ApplyTorque(80.0f, true);
+		App->audio->PlayFx(flipper_sfx);
+	}
 	else
-		App->scene_intro->rightFlipper->body->ApplyTorque(-15.0f, true);
+		App->scene_intro->rightFlipper->body->ApplyTorque(-25.0f, true);
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		App->scene_intro->leftFlipper->body->ApplyTorque(-65.0f, true);
+	{
+		App->scene_intro->leftFlipper->body->ApplyTorque(-80.0f, true);
+		App->audio->PlayFx(flipper_sfx);
+	}
 	else
-		App->scene_intro->leftFlipper->body->ApplyTorque(15.0f, true);
-
-
-
+		App->scene_intro->leftFlipper->body->ApplyTorque(25.0f, true);
 
 
 	/* Link player's texture with pbody when moving */
@@ -130,11 +136,13 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		LOG("Collision 100pts");
 		score += 100;
 		highscore += 100;
+		App->audio->PlayFx(bonus_sfx);
 		break;
 	case ColliderType::_200PTS:
 		LOG("Collision 200pts");
 		score += 200;
 		highscore += 200 ;
+		App->audio->PlayFx(bonus_sfx);
 		break;
 	case ColliderType::ROLLOVER:
 		LOG("Collision ROLLOVER");

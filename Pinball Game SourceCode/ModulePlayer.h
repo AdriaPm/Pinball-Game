@@ -27,6 +27,9 @@ public:
 
 	PhysBody* pbody;
 
+	uint flipper_sfx;
+	uint bonus_sfx;
+
 private:
 
 	bool godMode;

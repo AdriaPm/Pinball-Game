@@ -54,7 +54,7 @@ public:
 	
 
 	// FX
-	uint bonus_fx;
+	uint kicker_sfx;
 
 	// Raycast
 	p2Point<int> ray;
