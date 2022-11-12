@@ -163,6 +163,5 @@ void ModulePlayer::ResetPosition() {
 	// NOT WORKING!!!!!!!!!!!!
 	//Reset ball's position to initial position
 	LOG("Reseting BALL POSITION");
-	position.x = startPos.x;
-	position.y = startPos.y;
+	pbody->body->SetTransform(PIXEL_TO_METERS(startPos), 0);
 }
