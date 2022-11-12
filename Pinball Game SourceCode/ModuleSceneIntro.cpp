@@ -113,7 +113,7 @@ bool ModuleSceneIntro::Start()
 	wall = App->physics->CreateChain(0, 0, points2, 59, b2BodyType::b2_staticBody, ColliderType::WALL);
 
 	//Death Collider
-	through = App->physics->CreateRectangleSensor(SCREEN_WIDTH/2 - 32, (SCREEN_HEIGHT-32) + 16, 64*3, 32, b2BodyType::b2_staticBody, ColliderType::THROUGH);
+	through = App->physics->CreateRectangleSensor(SCREEN_WIDTH/2 - 32, (SCREEN_HEIGHT-32) + 16, 64*3, 1, b2BodyType::b2_staticBody, ColliderType::THROUGH);
 
 	//100 points Collider
 	App->physics->CreateCircle(298, 244, 14, b2BodyType::b2_staticBody, ColliderType::_100PTS);

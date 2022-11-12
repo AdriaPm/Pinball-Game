@@ -41,6 +41,8 @@ private:
 
 	bool godMode;
 	
+	bool deadBall = false;
+	int deadTime = 0;
 
 	SDL_Texture* texture;
 	const char* texturePath;

@@ -96,6 +96,16 @@ update_status ModulePlayer::Update()
 		App->scene_intro->leftFlipper->body->ApplyTorque(25.0f, true);
 
 
+	if (deadBall) {
+		
+		deadTime++;
+			if (deadTime >= 60)
+			{
+				ResetPosition();
+			}
+		
+	}
+
 	/* Link player's texture with pbody when moving */
 	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x - (27 / 2));
 	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y - (27 / 2));
@@ -123,7 +133,11 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 	case ColliderType::THROUGH:
 		LOG("Collision THROUGH");
 		lives--;
-		//App->player->ResetPosition();
+		deadBall = true;
+		/*if (lives == 0)
+		{
+
+		}*/
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
@@ -164,4 +178,6 @@ void ModulePlayer::ResetPosition() {
 	//Reset ball's position to initial position
 	LOG("Reseting BALL POSITION");
 	pbody->body->SetTransform(PIXEL_TO_METERS(startPos), 0);
+	deadBall = false;
+	deadTime = 0;
 }
