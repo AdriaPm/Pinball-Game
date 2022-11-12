@@ -1,27 +1,36 @@
-# {Project Name}
+# PINBALL
 
 ## Description
 
-{project description}
+Pinball game created for Physics II subject.
 
 ## Key Features
 
- - {Feature01}
- - {Feature02}
- - {Feature03}
- - {Feature04}
+ - {F1} - View logic/colliders + enable mouse joints.
  
 ## Controls
 
- - {ControlsScheme}
+ - {LEFT Arrow} - Move left flipper.
+ - {RIGHT Arrow} - Move right flipper.
+ - {DOWN Arrow} - Action the ball kicker.
 
 ## Developers
 
- - {Dev01} - {Role(s)}
- - {Dev02} - {Role(s)}
- - {Dev03} - {Role(s)}
- - {Dev04} - {Role(s)}
-
+ ![](https://github.com/Historn/PinBall_Game/blob/master/TeamPhotos/arnaujimenez.png)
+ - [Arnau Jiménez Gallego](https://github.com/Historn) - CODE 
+ 
+ ![](https://github.com/Historn/PinBall_Game/blob/master/TeamPhotos/adriapons.jpg)
+ - [Adrià Pons Mensa](https://github.com/AdriaPm) - CODE & ART
+ 
+ ![](https://github.com/Historn/PinBall_Game/blob/master/TeamPhotos/rylangraham.jpg)
+ - [Rylan Graham](https://github.com/RylanJGraham) - CODE
+ 
+ ![](https://github.com/Historn/PinBall_Game/blob/master/TeamPhotos/joelchaves.jpg)
+ - [Joel Chaves Moreno](https://github.com/JoeyCM) - CODE
+ 
+ ## Github repository
+  Click [here](https://github.com/Historn/PinBall_Game) to go to our project's Github repository.
+ 
 ## License
 
 This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](https://mit-license.org/) for further details.
