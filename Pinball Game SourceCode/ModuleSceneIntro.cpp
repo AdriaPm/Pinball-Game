@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
+#include "ModuleUI.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -329,6 +330,10 @@ update_status ModuleSceneIntro::Update()
 		App->renderer->Blit(rightFlipperTex, x, y, NULL, 0.2f, rightFlipper->GetRotation());
 	}
 
+	//Blit UI
+	App->ui->BlitScore();
+	App->ui->BlitHighScore();
+	App->ui->BlitLives();
 	
 	return UPDATE_CONTINUE;
 }

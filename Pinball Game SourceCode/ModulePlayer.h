@@ -15,7 +15,8 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-	void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB);
+	void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB); 
+	void ModulePlayer::ResetPosition();
 
 	int GetScore() { return score; }
 	int GetHighScore() { return highscore; }

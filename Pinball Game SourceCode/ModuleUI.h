@@ -25,7 +25,7 @@ public:
 	void BlitHighScore();
 	void BlitLives();
 
-	uint font_id;
+	uint font_id = -1;
 
 private:
 

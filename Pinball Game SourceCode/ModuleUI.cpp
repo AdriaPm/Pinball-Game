@@ -41,15 +41,6 @@ bool ModuleUI::CleanUp()
 update_status ModuleUI::Update()
 {
 	
-	if (App->player->alive == true)
-	{
-		BlitScore();
-		BlitHighScore();
-		BlitLives();
-	}
-
-
-
 	return UPDATE_CONTINUE;
 }
 
@@ -57,27 +48,21 @@ update_status ModuleUI::Update()
 void ModuleUI::BlitScore()
 {
 	char scoreText[10];
-
-	_itoa_s(App->player->GetHighScore(), scoreText, 10);
-
-	App->font->BlitText(10, 10, font_id, scoreText);
+	sprintf_s(scoreText, 10, "%d", App->player->GetScore());
+	App->font->BlitText(160, 39, font_id, scoreText);
 }
 
 void ModuleUI::BlitHighScore()
 {
 	char highScoreText[10];
-
-	_itoa_s(App->player->GetHighScore(), highScoreText, 10);
-
-	App->font->BlitText(100, 10, font_id, highScoreText);
+	sprintf_s(highScoreText, 10, "%d", App->player->GetScore());
+	App->font->BlitText(475, 39, font_id, highScoreText);
 }
 
 void ModuleUI::BlitLives()
 {
 	char livesText[10];
-
 	_itoa_s(App->player->GetLives(), livesText, 10);
-
-	App->font->BlitText(200, 10, font_id, livesText);
+	App->font->BlitText(700, 39, font_id, livesText);
 
 }

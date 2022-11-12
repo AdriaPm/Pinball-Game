@@ -120,6 +120,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 	case ColliderType::THROUGH:
 		LOG("Collision THROUGH");
 		lives--;
+		App->player->ResetPosition();
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
@@ -151,6 +152,11 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		LOG("Collision UNKNOWN");
 		break;
 	}
-
 }
 
+void ModulePlayer::ResetPosition() {
+
+	//Reset ball's position to initial position
+	position.x = startPos.x;
+	position.y = startPos.y;
+}
