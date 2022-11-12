@@ -95,7 +95,6 @@ update_status ModulePlayer::Update()
 	else
 		App->scene_intro->leftFlipper->body->ApplyTorque(25.0f, true);
 
-
 	if (deadBall) {
 		
 		deadTime++;

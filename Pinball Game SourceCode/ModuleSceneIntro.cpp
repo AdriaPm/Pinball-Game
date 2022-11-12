@@ -77,7 +77,7 @@ bool ModuleSceneIntro::Start()
 
 	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 50, 28, 16, b2BodyType::b2_kinematicBody, ColliderType::WALL);
 	shooter->listener = this;
-
+	distance = 0;
 	/* COLLIDERS */
 	//Upper Wall Collider
 	//wall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH - 2, -64, b2BodyType::b2_staticBody, ColliderType::WALL);
@@ -288,8 +288,6 @@ update_status ModuleSceneIntro::Update()
 {
 	App->renderer->Blit(scene, 0, 0, NULL);
 
-	shooter->body->SetAngularVelocity(5);
-
 	// If user presses SPACE, enable RayCast
 	if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
@@ -314,6 +312,24 @@ update_status ModuleSceneIntro::Update()
 	// Declare a vector. We will draw the normal to the hit surface (if we hit something)
 	fVector normal(0.0f, 0.0f);
 
+	//Shooter shot Ball
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+
+		if (distance <= 30)
+		{
+			distance++;
+			shotVel.y -= distance;
+		}
+	}
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
+
+		shotVel.y = PIXEL_TO_METERS(distance) * SPRING_K;
+		//App->scene_intro->shooter->body->ApplyLinearImpulse(shot, App->scene_intro->shooter->body->GetWorldCenter(), true);
+
+		App->scene_intro->shooter->body->SetLinearVelocity(shotVel);
+
+		distance = 0;
+	}
 
 
 	//Blit flippers

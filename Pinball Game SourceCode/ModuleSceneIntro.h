@@ -4,6 +4,7 @@
 #include "p2Point.h"
 #include "Globals.h"
 #include "Animation.h"
+#include "ModulePhysics.h"
 
 class PhysBody;
 struct SDL_Texture;
@@ -74,6 +75,7 @@ public:
 	Animation jumpPlayer;
 	Animation diePlayer;
 
-	float force;
-
+	//Shooter Velocity
+	b2Vec2 shotVel;
+	float distance;
 };
