@@ -29,6 +29,7 @@ public:
 
 	uint flipper_sfx;
 	uint bonus_sfx;
+	uint bumper_sfx;
 
 private:
 

@@ -31,6 +31,7 @@ bool ModulePlayer::Start()
 
 	flipper_sfx = App->audio->LoadFx("Assets/Audio/FX/flipper.wav");
 	bonus_sfx = App->audio->LoadFx("Assets/Audio/FX/bonus.wav");
+	bumper_sfx = App->audio->LoadFx("Assets/Audio/FX/bumper.wav");
 
 	startPos.x = 689;
 	startPos.y = 591;
@@ -82,18 +83,12 @@ update_status ModulePlayer::Update()
 
 	//Flippers' input
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-	{
 		App->scene_intro->rightFlipper->body->ApplyTorque(80.0f, true);
-		App->audio->PlayFx(flipper_sfx);
-	}
 	else
 		App->scene_intro->rightFlipper->body->ApplyTorque(-25.0f, true);
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-	{
 		App->scene_intro->leftFlipper->body->ApplyTorque(-80.0f, true);
-		App->audio->PlayFx(flipper_sfx);
-	}
 	else
 		App->scene_intro->leftFlipper->body->ApplyTorque(25.0f, true);
 
@@ -111,6 +106,8 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 {
+	b2Vec2 bumperImpulse = { velocity.x *= -1, velocity.y *= -1 };
+	
 	switch (physB->cType)
 	{
 	case ColliderType::WALL:
@@ -118,6 +115,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		break;
 	case ColliderType::FLIPPER:
 		LOG("Collision FLIPPER");
+		App->audio->PlayFx(flipper_sfx);
 		break;
 	case ColliderType::THROUGH:
 		LOG("Collision THROUGH");
@@ -125,6 +123,8 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
+		pbody->body->ApplyLinearImpulse(bumperImpulse, pbody->body->GetWorldCenter(), true);
+		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::SLINGSHOT:
 		LOG("Collision SLINGSHOT");
