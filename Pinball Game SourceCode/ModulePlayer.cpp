@@ -73,6 +73,9 @@ update_status ModulePlayer::Update()
 	
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
 		currentAnim = &rollingAnim;
+
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT)
+		App->player->ResetPosition();
 	
 	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
 	{
@@ -120,7 +123,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 	case ColliderType::THROUGH:
 		LOG("Collision THROUGH");
 		lives--;
-		App->player->ResetPosition();
+		//App->player->ResetPosition();
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
@@ -154,9 +157,12 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 	}
 }
 
+
 void ModulePlayer::ResetPosition() {
 
+	// NOT WORKING!!!!!!!!!!!!
 	//Reset ball's position to initial position
+	LOG("Reseting BALL POSITION");
 	position.x = startPos.x;
 	position.y = startPos.y;
 }

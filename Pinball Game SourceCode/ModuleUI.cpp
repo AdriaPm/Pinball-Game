@@ -49,20 +49,19 @@ void ModuleUI::BlitScore()
 {
 	char scoreText[10];
 	sprintf_s(scoreText, 10, "%d", App->player->GetScore());
-	App->font->BlitText(160, 39, font_id, scoreText);
+	App->font->BlitText(163, 39, font_id, scoreText);
 }
 
 void ModuleUI::BlitHighScore()
 {
 	char highScoreText[10];
 	sprintf_s(highScoreText, 10, "%d", App->player->GetScore());
-	App->font->BlitText(475, 39, font_id, highScoreText);
+	App->font->BlitText(435, 39, font_id, highScoreText);
 }
 
 void ModuleUI::BlitLives()
 {
 	char livesText[10];
 	_itoa_s(App->player->GetLives(), livesText, 10);
-	App->font->BlitText(700, 39, font_id, livesText);
-
+	App->font->BlitText(655, 39, font_id, livesText);
 }
