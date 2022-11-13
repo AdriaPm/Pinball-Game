@@ -263,18 +263,6 @@ bool ModuleSceneIntro::Start()
 	wall = App->physics->CreateChain(0, 0, points10, 10, b2BodyType::b2_staticBody, ColliderType::BUMPER);
 	
 	//Lower right bouncer
-<<<<<<< Updated upstream
-	int points11[8] = { 501, 623,
-						501, 604,
-						547, 512,
-						560, 512};
-	wall = App->physics->CreateChain(0, 0, points11, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);
-
-	//Collider at the exit of the launch tunnel
-	/*int points12[4] = { 704, 418,
-						638, 475};
-	wall = App->physics->CreateChain(0, 0, points12, 4, b2BodyType::b2_staticBody, ColliderType::WALL);*/
-=======
 	int points11[10] = { 560, 505,
 						560, 602,
 						501, 623,
@@ -282,8 +270,7 @@ bool ModuleSceneIntro::Start()
 						558, 501};
 	wall = App->physics->CreateChain(0, 0, points11, 10, b2BodyType::b2_staticBody, ColliderType::BUMPER);
 
-	
->>>>>>> Stashed changes
+
 
 	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
