@@ -35,6 +35,7 @@ bool ModuleSceneIntro::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
 	// Load textures
+	texture = App->textures->Load("Assets/Textures/sprite_sheet.png");
 	leftFlipperTex = App->textures->Load("Assets/Textures/leftFlipper.png");
 	rightFlipperTex = App->textures->Load("Assets/Textures/rightFlipper.png");
 	scene = App->textures->Load("Assets/Textures/Pinball_Scene.png");
@@ -44,6 +45,11 @@ bool ModuleSceneIntro::Start()
 
 	//Load Music
 	//App->audio->PlayMusic("Assets/Audio/Music/song.ogg", 1.0f);
+	
+	//Animations
+	flipperUp.PushBack({ 0, 74, 22, 56});
+	
+	flipperDown.PushBack({ 852, 99, 22, 31 });
 
 	//Flippers creation
 	b2RevoluteJointDef flipperJointDef_left;
@@ -78,6 +84,7 @@ bool ModuleSceneIntro::Start()
 	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 160, 28, 16, b2BodyType::b2_kinematicBody, ColliderType::WALL);
 	shooter->listener = this;
 	distance = 0;
+
 	/* COLLIDERS */
 	//Upper Wall Collider
 	//wall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH - 2, -64, b2BodyType::b2_staticBody, ColliderType::WALL);
@@ -293,6 +300,8 @@ update_status ModuleSceneIntro::Update()
 {
 	App->renderer->Blit(scene, 0, 0, NULL);
 
+	currentAnim = &flipperUp;
+
 	// If user presses SPACE, enable RayCast
 	if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
@@ -339,6 +348,17 @@ update_status ModuleSceneIntro::Update()
 	App->ui->BlitHighScore();
 	App->ui->BlitLives();
 	
+
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		currentAnim = &flipperDown;
+
+
+	//Blit Kicker anims
+	SDL_Rect rect = currentAnim->GetCurrentFrame();
+	App->renderer->Blit(texture, 677, 680, &rect);
+	currentAnim->Update();
+	
+
 	return UPDATE_CONTINUE;
 }
 

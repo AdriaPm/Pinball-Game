@@ -41,9 +41,11 @@ public:
 	//Death Sensor
 	PhysBody* through;
 
+	//Flippers' bodies
 	PhysBody* leftFlipper;
 	PhysBody* rightFlipper;
 
+	//Flippers' joint bodies
 	PhysBody* leftFlipperJoint;
 	PhysBody* rightFlipperJoint;
 
@@ -54,7 +56,7 @@ public:
 	SDL_Texture* scene;
 	SDL_Texture* leftFlipperTex;
 	SDL_Texture* rightFlipperTex;
-	
+	SDL_Texture* texture;
 
 	// FX
 	uint kicker_sfx;
@@ -69,14 +71,9 @@ public:
 
 	//Set of animations ITEM 1
 	Animation flipperDown;
-	Animation flipperUP;
+	Animation flipperUp;
+	Animation flipperCompressing;
 	
-	//Set of animations ITEM 2
-	Animation idlePlayer;
-	Animation runPlayer;
-	Animation jumpPlayer;
-	Animation diePlayer;
-
 	//Shooter Velocity
 	b2Vec2 shotVel;
 	float distance;
