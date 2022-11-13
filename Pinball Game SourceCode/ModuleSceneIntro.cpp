@@ -136,6 +136,55 @@ bool ModuleSceneIntro::Start()
 	App->physics->CreateCircle(464, 471, 14, b2BodyType::b2_staticBody, ColliderType::BUMPER);
 	App->physics->CreateCircle(352, 527, 14, b2BodyType::b2_staticBody, ColliderType::BUMPER);
 
+	/*Green Bumpers Colliders Left */
+	int points20[8] = { 131, 240,
+					  140, 247,
+						160, 226,
+					  151, 219};
+	App->physics->CreateChain(0, 0, points20, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+
+	int points18[8] = { 159, 212,
+					  168, 219,
+						188, 199,
+					  179, 192 };
+	App->physics->CreateChain(0, 0, points18, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+
+	int points19[8] = { 187, 184,
+					  195, 192,
+						215, 171,
+						208, 164,
+					   };
+	App->physics->CreateChain(0, 0, points19, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+
+	/*Green Bumpers Colliders Middle */
+	App->physics->CreateRectangle(304, 128, 32, 13, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+	App->physics->CreateRectangle(352, 128, 32, 13, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+	App->physics->CreateRectangle(400, 128, 32, 13, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+
+	/*Green Bumpers Colliders Right */
+	int points17[8] = { 488, 171,
+					  496, 164,
+						516, 184,
+					  508, 192 };
+	App->physics->CreateChain(0, 0, points17, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+
+	int points16[8] = { 515, 199,
+					  524, 192,
+						544, 213,
+					  536, 220 };
+	App->physics->CreateChain(0, 0, points16, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+
+	int points15[8] = { 544, 227,
+					  552, 220,
+						572, 240,
+						565, 248,
+	};
+	App->physics->CreateChain(0, 0, points15, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+
+
+
+
+
 	//Center map wall
 	int points3[12] = { 351, 264,
 					  288, 327,

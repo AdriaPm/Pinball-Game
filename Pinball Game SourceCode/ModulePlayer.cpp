@@ -4,13 +4,13 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
-#include "ModuleInput.h"
+#include "ModuleInput.h" 
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleSceneIntro.h"
 #include "p2Point.h"
 #include "p2List.h"
-//#include "ModuleFadeToBlack.h"
+#include "FadeToBlack.h"
 
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -32,6 +32,7 @@ bool ModulePlayer::Start()
 	flipper_sfx = App->audio->LoadFx("Assets/Audio/FX/flipper.wav");
 	bonus_sfx = App->audio->LoadFx("Assets/Audio/FX/bonus.wav");
 	bumper_sfx = App->audio->LoadFx("Assets/Audio/FX/bumper.wav");
+	FlipperPush_sfx = App->audio->LoadFx("Assets/Audio/FX/FlipperPush.wav");
 
 	startPos.x = 689;
 	startPos.y = 591;
@@ -85,13 +86,15 @@ update_status ModulePlayer::Update()
 	}
 
 	//Flippers' input
-	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
 		App->scene_intro->rightFlipper->body->ApplyTorque(80.0f, true);
+	}
 	else
 		App->scene_intro->rightFlipper->body->ApplyTorque(-25.0f, true);
 
-	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT){
 		App->scene_intro->leftFlipper->body->ApplyTorque(-80.0f, true);
+	}
 	else
 		App->scene_intro->leftFlipper->body->ApplyTorque(25.0f, true);
 

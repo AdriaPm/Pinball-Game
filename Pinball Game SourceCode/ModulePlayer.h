@@ -33,6 +33,7 @@ public:
 	PhysBody* pbody;
 
 	uint flipper_sfx;
+	uint FlipperPush_sfx;
 	uint bonus_sfx;
 	uint bumper_sfx;
 
