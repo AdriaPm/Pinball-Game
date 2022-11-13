@@ -75,7 +75,7 @@ bool ModuleSceneIntro::Start()
 	flipperJoint_right = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipperJointDef_right);
 
 
-	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 50, 28, 16, b2BodyType::b2_kinematicBody, ColliderType::WALL);
+	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 160, 28, 16, b2BodyType::b2_kinematicBody, ColliderType::WALL);
 	shooter->listener = this;
 	distance = 0;
 	/* COLLIDERS */
@@ -270,9 +270,9 @@ bool ModuleSceneIntro::Start()
 	wall = App->physics->CreateChain(0, 0, points11, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);
 
 	//Collider at the exit of the launch tunnel
-	int points12[4] = { 704, 418,
+	/*int points12[4] = { 704, 418,
 						638, 475};
-	wall = App->physics->CreateChain(0, 0, points12, 4, b2BodyType::b2_staticBody, ColliderType::WALL);
+	wall = App->physics->CreateChain(0, 0, points12, 4, b2BodyType::b2_staticBody, ColliderType::WALL);*/
 
 	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
@@ -319,25 +319,8 @@ update_status ModuleSceneIntro::Update()
 	// Declare a vector. We will draw the normal to the hit surface (if we hit something)
 	fVector normal(0.0f, 0.0f);
 
-	//Shooter shot Ball
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
-
-		if (distance <= 30)
-		{
-			distance++;
-			shotVel.y -= distance;
-		}
-	}
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
-
-		shotVel.y = PIXEL_TO_METERS(distance) * SPRING_K;
-		//App->scene_intro->shooter->body->ApplyLinearImpulse(shot, App->scene_intro->shooter->body->GetWorldCenter(), true);
-
-		App->scene_intro->shooter->body->SetLinearVelocity(shotVel);
-
-		distance = 0;
-	}
-
+	//Ball Shooter mechanic
+	Shot();
 
 	//Blit flippers
 	if (leftFlipper != NULL)
@@ -366,4 +349,45 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	
 
 	// Do something else. You can also check which bodies are colliding (sensor? ball? player?)
+}
+
+void ModuleSceneIntro::Shot() {
+	
+	//Shooter prepares Ball
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+
+		if (distance <= 100)
+		{
+			distance++;
+			LOG("DISTANCE: %d", distance);
+			shotVel.y = PIXEL_TO_METERS(distance);
+			App->scene_intro->shooter->body->SetLinearVelocity(shotVel);
+		}
+		else {
+			App->scene_intro->shooter->body->SetLinearVelocity({ 0,0 });
+		}
+
+	}
+
+	//Shoot Ball
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
+
+		shotVel.y = PIXEL_TO_METERS(distance) * SPRING_K;
+		stopShot = true;
+		App->scene_intro->shooter->body->SetLinearVelocity(shotVel);
+
+		distance = shotVel.y/SPRING_K;
+		distance = distance;
+		LOG("DISTANCE AFTER SHOT %f", &distance);
+	}
+
+	//Stops
+	if (stopShot == true) {
+		distance--;
+		if (distance <= 0) {
+			App->scene_intro->shooter->body->SetLinearVelocity({ 0,0 });
+			stopShot = false;
+			distance = 0;
+		}
+	}
 }

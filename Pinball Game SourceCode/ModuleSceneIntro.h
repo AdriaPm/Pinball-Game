@@ -23,6 +23,8 @@ public:
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
+	void Shot();
+
 public:
 
 	// Lists of physics objects
@@ -78,4 +80,8 @@ public:
 	//Shooter Velocity
 	b2Vec2 shotVel;
 	float distance;
+
+private:
+
+	bool stopShot = false;
 };
