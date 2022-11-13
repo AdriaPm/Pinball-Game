@@ -355,10 +355,10 @@ void ModuleSceneIntro::Shot() {
 	//Shooter prepares Ball
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
 
-		if (distance <= 100)
+		if (distance < 100)
 		{
 			distance++;
-			LOG("DISTANCE: %d", distance);
+			LOG("DISTANCE: %f", distance);
 			shotVel.y = PIXEL_TO_METERS(distance);
 			App->scene_intro->shooter->body->SetLinearVelocity(shotVel);
 		}
@@ -371,20 +371,25 @@ void ModuleSceneIntro::Shot() {
 	//Shoot Ball
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
 
-		shotVel.y = PIXEL_TO_METERS(distance*2) * SPRING_K;
+		shotVel.y = PIXEL_TO_METERS(distance) * SPRING_K;
+		//distance = PIXEL_TO_METERS(distance);
 		stopShot = true;
 		App->scene_intro->shooter->body->SetLinearVelocity(shotVel);
 
-		distance = shotVel.y/SPRING_K + 1;
-		distance = distance;
-		LOG("DISTANCE AFTER SHOT %f", &distance);
+		LOG("IMPULSE AFTER SHOT %f", shotVel.y);
+
+		//distance = PIXEL_TO_METERS(distance);
+
+		LOG("DISTANCE AFTER SHOT %f", distance);
 		stopShot = true;
 	}
 
 	//Stops
 	if (stopShot == true) {
-		distance--;
-		if (distance <= 0) {
+		//distance -= PIXEL_TO_METERS(distance)/(shotVel.y/SPRING_K);
+		distance -= (shotVel.y*SPRING_K)/PIXEL_TO_METERS(distance);
+		LOG("DISTANCE: %f", distance);
+		if (distance < 1) {
 			App->scene_intro->shooter->body->SetLinearVelocity({ 0,0 });
 			stopShot = false;
 			
