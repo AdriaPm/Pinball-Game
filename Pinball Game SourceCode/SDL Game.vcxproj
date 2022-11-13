@@ -71,6 +71,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="EndingScreen.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="FadeToBlack.h" />
     <ClInclude Include="ModuleFonts.h" />
@@ -91,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="EndingScreen.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />

@@ -12,6 +12,7 @@
 #include "ModuleUI.h"
 #include "TitleScreen.h"
 #include "FadeToBlack.h"
+#include "EndingScreen.h"
 
 
 #include "Application.h"
@@ -29,6 +30,8 @@ Application::Application()
 	scene_intro = new ModuleSceneIntro(this);
 	font = new ModuleFonts(this, true);
 	ui = new ModuleUI(this);
+	ending_screen = new EndingScreen(this);
+
 	physics = new ModulePhysics(this);
 	
 
@@ -50,7 +53,8 @@ Application::Application()
 	// Scenes
 	AddModule(title);
 	AddModule(scene_intro);
-	
+	AddModule(ending_screen);
+
 	// Player
 	AddModule(player);
 }

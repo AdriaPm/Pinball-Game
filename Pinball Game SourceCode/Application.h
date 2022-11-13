@@ -15,6 +15,7 @@ class TitleScreen;
 class ModuleSceneIntro;
 class ModuleFonts;
 class ModuleUI;
+class EndingScreen;
 class ModulePhysics;
 
 
@@ -33,6 +34,7 @@ public:
 	ModuleSceneIntro* scene_intro;
 	ModuleFonts* font;
 	ModuleUI* ui;
+	EndingScreen* ending_screen;
 	ModulePhysics* physics;
 	
 
