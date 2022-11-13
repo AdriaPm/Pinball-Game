@@ -80,8 +80,9 @@ public:
 	//Shooter Velocity
 	b2Vec2 shotVel;
 	float distance;
+	bool shotcompleted = false;
 
 private:
 
-	bool stopShot = false;
+	bool stopShot;
 };

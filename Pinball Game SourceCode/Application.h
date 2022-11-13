@@ -10,10 +10,13 @@ class ModuleTextures;
 class ModuleInput;
 class ModuleAudio;
 class ModulePlayer;
+class FadeToBlack;
+class TitleScreen;
 class ModuleSceneIntro;
 class ModuleFonts;
 class ModuleUI;
 class ModulePhysics;
+
 
 
 class Application
@@ -25,10 +28,13 @@ public:
 	ModuleInput* input;
 	ModuleAudio* audio;
 	ModulePlayer* player;
+	FadeToBlack* fade;
+	TitleScreen* title;
 	ModuleSceneIntro* scene_intro;
 	ModuleFonts* font;
 	ModuleUI* ui;
 	ModulePhysics* physics;
+	
 
 private:
 

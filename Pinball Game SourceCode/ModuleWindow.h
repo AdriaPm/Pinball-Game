@@ -19,6 +19,7 @@ public:
 	bool CleanUp();
 
 	void SetTitle(const char* title);
+	uint GetScale() const;
 
 public:
 	//The window we'll be rendering to
@@ -26,6 +27,7 @@ public:
 
 	//The surface contained by the window
 	SDL_Surface* screen_surface;
+	uint scale = 1;
 };
 
 #endif // __ModuleWindow_H__

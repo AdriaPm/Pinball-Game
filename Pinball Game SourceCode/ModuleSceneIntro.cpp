@@ -350,7 +350,8 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 }
 
 void ModuleSceneIntro::Shot() {
-	
+	/*statusforonshooter = true*/
+
 	//Shooter prepares Ball
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
 
@@ -370,13 +371,14 @@ void ModuleSceneIntro::Shot() {
 	//Shoot Ball
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
 
-		shotVel.y = PIXEL_TO_METERS(distance) * SPRING_K;
+		shotVel.y = PIXEL_TO_METERS(distance*2) * SPRING_K;
 		stopShot = true;
 		App->scene_intro->shooter->body->SetLinearVelocity(shotVel);
 
-		distance = shotVel.y/SPRING_K;
+		distance = shotVel.y/SPRING_K + 1;
 		distance = distance;
 		LOG("DISTANCE AFTER SHOT %f", &distance);
+		stopShot = true;
 	}
 
 	//Stops
@@ -385,7 +387,7 @@ void ModuleSceneIntro::Shot() {
 		if (distance <= 0) {
 			App->scene_intro->shooter->body->SetLinearVelocity({ 0,0 });
 			stopShot = false;
-			distance = 0;
+			
 		}
 	}
 }
