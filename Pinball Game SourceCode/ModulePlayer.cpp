@@ -108,6 +108,8 @@ update_status ModulePlayer::Update()
 		
 	}
 
+	App->player->Bonus();
+
 	/* Link player's texture with pbody when moving */
 	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x - (27 / 2));
 	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y - (27 / 2));
@@ -183,4 +185,15 @@ void ModulePlayer::ResetPosition() {
 	pbody->body->SetTransform(PIXEL_TO_METERS(startPos), 0);
 	deadBall = false;
 	deadTime = 0;
+}
+
+void ModulePlayer::Bonus() {
+
+	if (score >= 1000 && bonusIsActive == false)
+	{
+		LOG("BONUS! 1 extra life");
+		lives++;
+		bonusIsActive = true;
+	}
+
 }

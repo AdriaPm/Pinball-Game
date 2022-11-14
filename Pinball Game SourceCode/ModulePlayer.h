@@ -18,6 +18,8 @@ public:
 	void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB); 
 	void ModulePlayer::ResetPosition();
 
+	void Bonus();
+
 	int GetScore() { return score; }
 	int GetHighScore() { return highscore; }
 	int GetLives() { return lives; }
@@ -55,5 +57,7 @@ private:
 
 	int score = 0;
 	int highscore = 0;
+
+	bool bonusIsActive = false;
 
 };
