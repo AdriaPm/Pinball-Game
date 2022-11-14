@@ -34,6 +34,12 @@ bool EndingScreen::Start()
 	LOG("Loading EndingScreen");
 	bool ret = true;
 
+	App->player->lives = 3;
+	App->player->ResetPosition();
+
+	App->player->Disable();
+	App->physics->Disable();
+
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
 	LOG("--STARTS ENDING SCENE--");
@@ -41,9 +47,6 @@ bool EndingScreen::Start()
 	img = App->textures->Load("Assets/Textures/EndingScreen.png");
 	startSFX = App->audio->LoadFx("Assets/Audio/Fx/start_game.wav");
 	
-	App->player->alive = false;
-	App->player->ResetPosition();
-
 	
 	return true;
 }
@@ -51,13 +54,13 @@ bool EndingScreen::Start()
 // Called each loop iteration
 update_status EndingScreen::Update()
 {
+	App->renderer->Blit(img, 0, 0, NULL);
+
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
 		LOG("PASA A GAME SCENE");
-		App->fade->FadeBlack(App->ending_screen, (Module*)App->scene_intro, 90);
+		App->fade->FadeBlack(App->ending_screen, (Module*)App->title, 90);
 		App->audio->PlayFx(startSFX);
 	}
-
-	App->renderer->Blit(img, 0, 0, NULL);
 
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN) {
 		return UPDATE_STOP;

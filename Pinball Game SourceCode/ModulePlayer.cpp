@@ -87,13 +87,13 @@ update_status ModulePlayer::Update()
 
 	//Flippers' input
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
-		App->scene_intro->rightFlipper->body->ApplyTorque(80.0f, true);
+		App->scene_intro->rightFlipper->body->ApplyTorque(150.0f, true);
 	}
 	else
 		App->scene_intro->rightFlipper->body->ApplyTorque(-25.0f, true);
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT){
-		App->scene_intro->leftFlipper->body->ApplyTorque(-80.0f, true);
+		App->scene_intro->leftFlipper->body->ApplyTorque(-150.0f, true);
 	}
 	else
 		App->scene_intro->leftFlipper->body->ApplyTorque(25.0f, true);
@@ -140,10 +140,10 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		LOG("Collision THROUGH");
 		lives--;
 		deadBall = true;
-		/*if (lives == 0)
+		if (lives == 0)
 		{
-
-		}*/
+			App->fade->FadeBlack(App->scene_intro, (Module*)App->ending_screen, 90);
+		}
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");

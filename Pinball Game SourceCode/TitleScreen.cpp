@@ -14,6 +14,7 @@
 #include "ModuleTextures.h"
 #include "ModuleUI.h"
 #include "FadeToBlack.h"
+#include "ModulePlayer.h"
 
 
 #include "SDL/include/SDL_render.h"
@@ -32,6 +33,8 @@ bool TitleScreen::Start()
 {
 	LOG("Loading TitleScreen");
 	bool ret = true;
+
+	App->player->Disable();
 
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 

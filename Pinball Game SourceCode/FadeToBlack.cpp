@@ -30,10 +30,10 @@ bool FadeToBlack::Start()
 	return true;
 }
 
-bool FadeToBlack::Update(float dt)
+update_status FadeToBlack::Update()
 {
 	// Exit this function if we are not performing a fade
-	if (currentStep == Fade_Step::NONE) return true;
+	if (currentStep == Fade_Step::NONE) return UPDATE_CONTINUE;
 
 	if (currentStep == Fade_Step::TO_BLACK)
 	{
@@ -54,19 +54,21 @@ bool FadeToBlack::Update(float dt)
 			currentStep = Fade_Step::NONE;
 		}
 	}
-
-	// Exit this function if we are not performing a fade
-	if (currentStep == Fade_Step::NONE) return true;
-
-	float fadeRatio = (float)frameCount / (float)maxFadeFrames;
+	fadeRatio = (float)frameCount / (float)maxFadeFrames;
 
 	// Render the black square with alpha on the screen
 	SDL_SetRenderDrawColor(App->renderer->renderer, 0, 0, 0, (Uint8)(fadeRatio * 255.0f));
+	
+	// Exit this function if we are not performing a fade
+	if (currentStep == Fade_Step::NONE) return UPDATE_CONTINUE;
+
 	SDL_RenderFillRect(App->renderer->renderer, &screenRect);
 
 
-	return true;
+	return UPDATE_CONTINUE;
 }
+
+
 
 bool FadeToBlack::FadeBlack(Module* moduleToDisable, Module* moduleToEnable, float frames)
 {

@@ -25,12 +25,12 @@ Application::Application()
 	input = new ModuleInput(this);
 	audio = new ModuleAudio(this, true);
 	player = new ModulePlayer(this);
-	fade = new FadeToBlack(this);
-	title = new TitleScreen(this);
-	scene_intro = new ModuleSceneIntro(this);
+	fade = new FadeToBlack(this, true);
+	title = new TitleScreen(this, true);
+	scene_intro = new ModuleSceneIntro(this, false);
 	font = new ModuleFonts(this, true);
 	ui = new ModuleUI(this);
-	ending_screen = new EndingScreen(this);
+	ending_screen = new EndingScreen(this, false);
 
 	physics = new ModulePhysics(this);
 	
@@ -48,12 +48,13 @@ Application::Application()
 	AddModule(audio);
 	AddModule(font);
 	AddModule(ui);
-	AddModule(fade);
 	
 	// Scenes
 	AddModule(title);
 	AddModule(scene_intro);
 	AddModule(ending_screen);
+	
+	AddModule(fade);
 
 	// Player
 	AddModule(player);

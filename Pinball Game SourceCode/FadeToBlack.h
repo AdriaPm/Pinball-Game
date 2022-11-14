@@ -19,7 +19,9 @@ public:
 
 	// Called at the middle of the application loop
 	// Updates the fade logic
-	bool Update(float dt);
+	update_status Update();
+
+	//update_status PostUpdate();
 
 	// Called at the end of the application loop
 	// Performs the render call of a black rectangle with transparency
@@ -48,6 +50,8 @@ private:
 	// The modules that should be switched after the first step
 	Module* moduleToEnable = nullptr;
 	Module* moduleToDisable = nullptr;
+
+	float fadeRatio;
 };
 
 #endif //__FADETOBLACK_H__

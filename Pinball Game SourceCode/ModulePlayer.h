@@ -40,6 +40,7 @@ public:
 	uint bumper_sfx;
 
 	bool alive;
+	uint lives = 3;
 private:
 
 	bool godMode;
@@ -52,8 +53,6 @@ private:
 
 	b2Vec2 startPos;
 	b2Vec2 velocity;
-
-	uint lives = 3;
 
 	int score = 0;
 	int highscore = 0;
