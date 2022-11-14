@@ -160,13 +160,15 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 	case ColliderType::_100PTS:
 		LOG("Collision 100pts");
 		score += 100;
-		highscore += 100;
+		if(highscore + 100 <= score)
+			highscore += 100;
 		App->audio->PlayFx(bonus_sfx);
 		break;
 	case ColliderType::_200PTS:
 		LOG("Collision 200pts");
 		score += 200;
-		highscore += 200 ;
+		if (highscore + 100 <= score)
+			highscore += 200 ;
 		App->audio->PlayFx(bonus_sfx);
 		break;
 	case ColliderType::ROLLOVER:
