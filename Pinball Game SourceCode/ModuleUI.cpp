@@ -55,13 +55,13 @@ void ModuleUI::BlitScore()
 void ModuleUI::BlitHighScore()
 {
 	char highScoreText[10];
-	sprintf_s(highScoreText, 10, "%d", App->player->GetScore());
+	sprintf_s(highScoreText, 10, "%d", App->player->GetHighScore());
 	App->font->BlitText(435, 39, font_id, highScoreText);
 }
 
 void ModuleUI::BlitLives()
 {
 	char livesText[10];
-	_itoa_s(App->player->GetLives(), livesText, 10);
+	sprintf_s(livesText, 10, "%d", App->player->GetLives());
 	App->font->BlitText(655, 39, font_id, livesText);
 }

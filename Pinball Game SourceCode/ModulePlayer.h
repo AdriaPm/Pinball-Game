@@ -42,6 +42,9 @@ public:
 
 	bool alive;
 	uint lives = 3;
+
+	int score = 0;
+	int highscore = 0;
 private:
 
 	bool godMode;
@@ -54,9 +57,6 @@ private:
 
 	b2Vec2 startPos;
 	b2Vec2 velocity;
-
-	int score = 0;
-	int highscore = 0;
 
 	bool bonusIsActive = false;
 

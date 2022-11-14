@@ -35,6 +35,7 @@ bool ModuleSceneIntro::Start()
 	App->physics->Enable();
 	App->player->Enable();
 	
+	App->player->score = 0;
 
 	// Set camera position
 	App->renderer->camera.x = App->renderer->camera.y = 0;
