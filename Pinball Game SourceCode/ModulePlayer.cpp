@@ -108,6 +108,7 @@ update_status ModulePlayer::Update()
 		
 	}
 
+	//Bonus function (1 extra life if score 1000)
 	App->player->Bonus();
 
 	/* Link player's texture with pbody when moving */
@@ -195,5 +196,4 @@ void ModulePlayer::Bonus() {
 		lives++;
 		bonusIsActive = true;
 	}
-
 }
