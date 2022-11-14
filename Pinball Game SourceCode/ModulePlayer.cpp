@@ -33,6 +33,7 @@ bool ModulePlayer::Start()
 	bonus_sfx = App->audio->LoadFx("Assets/Audio/FX/bonus.wav");
 	bumper_sfx = App->audio->LoadFx("Assets/Audio/FX/bumper.wav");
 	FlipperPush_sfx = App->audio->LoadFx("Assets/Audio/FX/FlipperPush.wav");
+	extraLife_sfx = App->audio->LoadFx("Assets/Audio/FX/extraLife.wav");
 
 	startPos.x = 689;
 	startPos.y = 591;
@@ -195,5 +196,6 @@ void ModulePlayer::Bonus() {
 		LOG("BONUS! 1 extra life");
 		lives++;
 		bonusIsActive = true;
+		App->audio->PlayFx(extraLife_sfx);
 	}
 }

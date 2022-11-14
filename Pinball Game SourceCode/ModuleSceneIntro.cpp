@@ -49,7 +49,7 @@ bool ModuleSceneIntro::Start()
 	kicker_sfx = App->audio->LoadFx("Assets/Audio/FX/kicker.wav");
 
 	//Load Music
-	//App->audio->PlayMusic("Assets/Audio/Music/song.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Audio/Music/song.ogg", 1.0f);
 	
 	//Animations
 	flipperUp.PushBack({ 0, 74, 22, 56});

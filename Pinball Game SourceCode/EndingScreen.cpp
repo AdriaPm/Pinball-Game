@@ -47,6 +47,7 @@ bool EndingScreen::Start()
 	img = App->textures->Load("Assets/Textures/EndingScreen.png");
 	startSFX = App->audio->LoadFx("Assets/Audio/Fx/start_game.wav");
 	
+	App->audio->PlayMusic("Assets/Audio/Music/gameOver.ogg", 1.0f);
 	
 	return true;
 }

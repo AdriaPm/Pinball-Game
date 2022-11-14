@@ -38,6 +38,7 @@ public:
 	uint FlipperPush_sfx;
 	uint bonus_sfx;
 	uint bumper_sfx;
+	uint extraLife_sfx;
 
 	bool alive;
 	uint lives = 3;
