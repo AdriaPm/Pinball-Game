@@ -338,6 +338,7 @@ bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
 
+	App->textures->Unload(texture);
 	App->textures->Unload(scene);
 	App->textures->Unload(leftFlipperTex);
 	App->textures->Unload(rightFlipperTex);
