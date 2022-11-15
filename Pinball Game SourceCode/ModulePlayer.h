@@ -45,6 +45,8 @@ public:
 
 	int score = 0;
 	int highscore = 0;
+
+	bool bonusIsActive = false;
 private:
 
 	bool godMode;
@@ -57,7 +59,5 @@ private:
 
 	b2Vec2 startPos;
 	b2Vec2 velocity;
-
-	bool bonusIsActive = false;
 
 };

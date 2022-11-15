@@ -36,6 +36,7 @@ bool ModuleSceneIntro::Start()
 	App->player->Enable();
 	
 	App->player->score = 0;
+	App->player->bonusIsActive = false;
 
 	// Set camera position
 	App->renderer->camera.x = App->renderer->camera.y = 0;
