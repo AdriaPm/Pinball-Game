@@ -26,6 +26,8 @@ enum class ColliderType {
 	TRIGGER,
 	_100PTS,
 	_200PTS,
+	x2,
+	x3,
 	UNKNOWN
 };
 
