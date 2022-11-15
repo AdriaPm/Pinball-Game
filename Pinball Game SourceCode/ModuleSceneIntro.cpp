@@ -88,6 +88,7 @@ bool ModuleSceneIntro::Start()
 
 
 	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 160, 28, 16, b2BodyType::b2_kinematicBody, ColliderType::WALL);
+	shooterInitPos = shooter->body->GetWorldCenter();
 	shooter->listener = this;
 	distance = 0;
 
@@ -430,7 +431,6 @@ void ModuleSceneIntro::Shot() {
 
 	//Shooter prepares Ball
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
-
 		if (distance < 100)
 		{
 			distance++;
@@ -448,31 +448,21 @@ void ModuleSceneIntro::Shot() {
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
 
 		shotVel.y = PIXEL_TO_METERS(distance) * SPRING_K;
-		//distance = PIXEL_TO_METERS(distance);
-		stopShot = true;
 		App->scene_intro->shooter->body->SetLinearVelocity(shotVel);
 
 		LOG("IMPULSE AFTER SHOT %f", shotVel.y);
 
-		rest = (distance) * (-shotVel.y) - distance;
-		distance = (distance)*(-shotVel.y);
-		rest = distance / -shotVel.y;
-
-		LOG("DISTANCE AFTER SHOT %f", distance);
 		stopShot = true;
 	}
 
 	//Stops
 	if (stopShot == true) {
-		//distance -= PIXEL_TO_METERS(distance)/(shotVel.y/SPRING_K);
-		//distance -= (shotVel.y*SPRING_K)/PIXEL_TO_METERS(distance);
-		//distance--;
-		//distance = distance - 10100;
-		//distance = distance - (-SPRING_K*9);
-		distance -= 90;
-		LOG("DISTANCE: %f", distance);
-		if (distance <= -shotVel.y) {
+
+		LOG("POSITION: %f, %f", shooter->body->GetWorldCenter().x, shooter->body->GetWorldCenter().y);
+		
+		if (shooter->body->GetWorldCenter().y < shooterInitPos.y) {
 			App->scene_intro->shooter->body->SetLinearVelocity({ 0,0 });
+			App->scene_intro->shooter->body->SetTransform(shooterInitPos, 0.0f);
 			stopShot = false;
 			distance = 0;
 		}

@@ -5,7 +5,7 @@
 
 #define GRAVITY_X 0.0f
 #define GRAVITY_Y -10.0f
-#define SPRING_K -5.0f
+#define SPRING_K -15.0f
 #define RESTITUTION_COEF 0.5f
 
 #define PIXELS_PER_METER 50.0f // if touched change METER_PER_PIXEL too
