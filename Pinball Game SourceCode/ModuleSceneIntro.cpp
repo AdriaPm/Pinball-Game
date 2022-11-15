@@ -454,7 +454,9 @@ void ModuleSceneIntro::Shot() {
 
 		LOG("IMPULSE AFTER SHOT %f", shotVel.y);
 
-		//distance = PIXEL_TO_METERS(distance);
+		rest = (distance) * (-shotVel.y) - distance;
+		distance = (distance)*(-shotVel.y);
+		rest = distance / -shotVel.y;
 
 		LOG("DISTANCE AFTER SHOT %f", distance);
 		stopShot = true;
@@ -464,13 +466,15 @@ void ModuleSceneIntro::Shot() {
 	if (stopShot == true) {
 		//distance -= PIXEL_TO_METERS(distance)/(shotVel.y/SPRING_K);
 		//distance -= (shotVel.y*SPRING_K)/PIXEL_TO_METERS(distance);
-		distance--;
-		distance = -shotVel.y / PIXEL_TO_METERS(distance);
+		//distance--;
+		//distance = distance - 10100;
+		//distance = distance - (-SPRING_K*9);
+		distance -= 90;
 		LOG("DISTANCE: %f", distance);
-		if (distance < 1) {
+		if (distance <= -shotVel.y) {
 			App->scene_intro->shooter->body->SetLinearVelocity({ 0,0 });
 			stopShot = false;
-			
+			distance = 0;
 		}
 	}
 }
