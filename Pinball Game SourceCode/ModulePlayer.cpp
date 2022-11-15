@@ -126,7 +126,7 @@ update_status ModulePlayer::Update()
 void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 {
 	//Bumper's vector impulse when ball hits one of them
-	b2Vec2 bumperImpulse = { (velocity.x *= -1) / 2, (velocity.y *= -1) / 2};
+	b2Vec2 bumperImpulse = { (velocity.x *= -1) * RESTITUTION_COEF, (velocity.y *= -1) * RESTITUTION_COEF };
 	
 	switch (physB->cType)
 	{
