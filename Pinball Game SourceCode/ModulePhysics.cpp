@@ -312,7 +312,7 @@ PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height, b2
 	b2BodyDef body;
 	body.type = bType;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
-	body.angle = angle;
+	body.angle = DEGTORAD * angle;
 
 	// Add BODY to the world
 	b2Body* b = world->CreateBody(&body);
@@ -347,7 +347,7 @@ PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int heig
 	b2BodyDef body;
 	body.type = bType;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
-	body.angle = RADTODEG * angle;
+	body.angle = DEGTORAD * angle;
 
 	// Add BODY to the world
 	b2Body* b = world->CreateBody(&body);
