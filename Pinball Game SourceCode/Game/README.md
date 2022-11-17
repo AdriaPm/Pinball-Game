@@ -7,7 +7,8 @@ Pinball game created for Physics II subject.
 ## Key Features
 
  - {F1} - View logic/colliders + enable mouse joints.
- 
+ - {R} - Reset ball's position
+
 ## Controls
 
  - {LEFT Arrow} - Move left flipper.
