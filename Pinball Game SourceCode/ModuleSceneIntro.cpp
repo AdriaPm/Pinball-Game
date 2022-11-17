@@ -274,37 +274,37 @@ bool ModuleSceneIntro::Start()
 	wall = App->physics->CreateChain(0, 0, points7, 44, b2BodyType::b2_staticBody, ColliderType::WALL);
 
 	//Upper left Bouncer
-	/*int points8[8] = { 64, 468,
+	int points8[8] = { 64, 468,
 						143, 495,
 						142, 512,
 						64, 512};
-	wall = App->physics->CreateChain(0, 0, points8, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);*/
-	App->physics->CreateRectangle(105, 483, 85, 5, b2BodyType::b2_staticBody, ColliderType::BUMPER, 18.5);
+	wall = App->physics->CreateChain(0, 0, points8, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+	/*App->physics->CreateRectangle(105, 483, 85, 5, b2BodyType::b2_staticBody, ColliderType::BUMPER, 18.5);*/
 	
 	//Lower left bouncer
-	/*int points9[8] = { 152, 504,
+	int points9[8] = { 152, 504,
 						203, 603,
 						203, 623,
 						145, 602 };
-	wall = App->physics->CreateChain(0, 0, points9, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);*/
-	App->physics->CreateRectangle(175, 555, 115, 10, b2BodyType::b2_staticBody, ColliderType::BUMPER, 62.5);
+	wall = App->physics->CreateChain(0, 0, points9, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+	/*App->physics->CreateRectangle(175, 555, 115, 10, b2BodyType::b2_staticBody, ColliderType::BUMPER, 62.5);*/
 	
 	//Upper right bouncer
-	/*int points10[8] = { 640, 511,
+	int points10[8] = { 640, 511,
 						561, 513,
 						561, 495,
 						640, 472};
-	wall = App->physics->CreateChain(0, 0, points10, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);*/
-	App->physics->CreateRectangle(105, 483, 85, 5, b2BodyType::b2_staticBody, ColliderType::BUMPER, -18.5);
+	wall = App->physics->CreateChain(0, 0, points10, 8, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+	/*App->physics->CreateRectangle(105, 483, 85, 5, b2BodyType::b2_staticBody, ColliderType::BUMPER, -18.5);*/
 	
 	//Lower right bouncer
-	/*int points11[10] = { 560, 505,
+	int points11[10] = { 560, 505,
 						560, 602,
 						501, 623,
 						501, 603,
 						558, 501};
-	wall = App->physics->CreateChain(0, 0, points11, 10, b2BodyType::b2_staticBody, ColliderType::BUMPER);*/
-	App->physics->CreateRectangle(175, 555, 115, 10, b2BodyType::b2_staticBody, ColliderType::BUMPER, 62.5);
+	wall = App->physics->CreateChain(0, 0, points11, 10, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+	/*App->physics->CreateRectangle(175, 555, 115, 10, b2BodyType::b2_staticBody, ColliderType::BUMPER, 62.5);*/
 
 
 
