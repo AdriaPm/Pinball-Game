@@ -34,6 +34,8 @@ public:
 
 	PhysBody* pbody;
 
+	b2Vec2 bounceImpulse;
+
 	uint flipper_sfx;
 	uint FlipperPush_sfx;
 	uint bonus_sfx;
@@ -64,6 +66,6 @@ private:
 
 	b2Vec2 startPos;
 	b2Vec2 velocity;
-	b2Vec2 bounceImpulse;
 
+	int bounces = 0;
 };
