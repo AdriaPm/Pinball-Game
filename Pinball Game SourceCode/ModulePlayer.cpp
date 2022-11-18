@@ -39,7 +39,7 @@ bool ModulePlayer::Start()
 	resetBall_sfx = App->audio->LoadFx("Assets/Audio/FX/resetBall.wav");
 
 	startPos.x = 689;
-	startPos.y = 588;
+	startPos.y = 663;
 	
 	position.x = startPos.x;
 	position.y = startPos.y;

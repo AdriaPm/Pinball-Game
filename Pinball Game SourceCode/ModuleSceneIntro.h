@@ -71,7 +71,6 @@ public:
 	Animation* currentAnim;
 
 	//Set of animations ITEM 1
-	Animation flipperDown;
 	Animation flipperUp;
 	Animation flipperCompressing;
 	

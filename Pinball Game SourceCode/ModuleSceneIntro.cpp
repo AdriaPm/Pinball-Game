@@ -55,7 +55,33 @@ bool ModuleSceneIntro::Start()
 	//Animations
 	flipperUp.PushBack({ 0, 74, 22, 56});
 	
-	flipperDown.PushBack({ 852, 99, 22, 31 });
+	flipperCompressing.PushBack({ 36, 74, 22, 56});
+	flipperCompressing.PushBack({ 70, 74, 22, 56});
+	flipperCompressing.PushBack({ 104, 74, 22, 56});
+	flipperCompressing.PushBack({ 138, 74, 22, 56});
+	flipperCompressing.PushBack({ 172, 74, 22, 56});
+	flipperCompressing.PushBack({ 206, 74, 22, 56});
+	flipperCompressing.PushBack({ 240, 74, 22, 56});
+	flipperCompressing.PushBack({ 274, 74, 22, 56});
+	flipperCompressing.PushBack({ 308, 74, 22, 56});
+	flipperCompressing.PushBack({ 342, 74, 22, 56});
+	flipperCompressing.PushBack({ 376, 74, 22, 56});
+	flipperCompressing.PushBack({ 410, 74, 22, 56});
+	flipperCompressing.PushBack({ 444, 74, 22, 56});
+	flipperCompressing.PushBack({ 478, 74, 22, 56});
+	flipperCompressing.PushBack({ 512, 74, 22, 56});
+	flipperCompressing.PushBack({ 546, 74, 22, 56});
+	flipperCompressing.PushBack({ 580, 74, 22, 56});
+	flipperCompressing.PushBack({ 614, 74, 22, 56});
+	flipperCompressing.PushBack({ 648, 74, 22, 56});
+	flipperCompressing.PushBack({ 682, 74, 22, 56});
+	flipperCompressing.PushBack({ 716, 74, 22, 56});
+	flipperCompressing.PushBack({ 750, 74, 22, 56});
+	flipperCompressing.PushBack({ 784, 74, 22, 56});
+	flipperCompressing.PushBack({ 818, 74, 22, 56});
+	flipperCompressing.PushBack({ 852, 74, 22, 56});
+	flipperCompressing.loop = false;
+	flipperCompressing.speed = 0.43f;
 
 	//Flippers creation
 	b2RevoluteJointDef flipperJointDef_left;
@@ -87,7 +113,7 @@ bool ModuleSceneIntro::Start()
 	flipperJoint_right = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipperJointDef_right);
 
 
-	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 160, 28, 16, b2BodyType::b2_kinematicBody, ColliderType::WALL);
+	shooter = App->physics->CreateRectangle(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 80, 28, 16, b2BodyType::b2_kinematicBody, ColliderType::WALL);
 	shooterInitPos = shooter->body->GetWorldCenter();
 	shooter->listener = this;
 	distance = 0;
@@ -383,9 +409,11 @@ update_status ModuleSceneIntro::Update()
 	App->ui->BlitHighScore();
 	App->ui->BlitLives();
 	
-
+	//Spring animation
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		currentAnim = &flipperDown;
+		currentAnim = &flipperCompressing;
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
+		flipperCompressing.Reset();
 
 
 	//Check if MULTIPLIERS are ACTIVATED
@@ -434,7 +462,7 @@ void ModuleSceneIntro::Shot() {
 
 	//Shooter prepares Ball
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
-		if (distance < 100)
+		if (distance < 55)
 		{
 			distance++;
 			LOG("DISTANCE: %f", distance);
