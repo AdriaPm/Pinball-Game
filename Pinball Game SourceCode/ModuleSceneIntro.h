@@ -60,6 +60,7 @@ public:
 
 	// FX
 	uint kicker_sfx;
+	uint multiplierDeactivation_sfx;
 
 	// Raycast
 	p2Point<int> ray;

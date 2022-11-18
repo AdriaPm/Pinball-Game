@@ -47,6 +47,7 @@ bool ModuleSceneIntro::Start()
 
 	//Load SFX
 	kicker_sfx = App->audio->LoadFx("Assets/Audio/FX/kicker.wav");
+	multiplierDeactivation_sfx = App->audio->LoadFx("Assets/Audio/FX/multiplierDeactivation.wav");
 
 	//Load Music
 	App->audio->PlayMusic("Assets/Audio/Music/song.ogg", 1.0f);
@@ -395,6 +396,7 @@ update_status ModuleSceneIntro::Update()
 			LOG("Deactivating x2 multiplier");
 			App->player->multiplierx2IsActive = false;
 			App->player->multiplierTime = 0;
+			App->audio->PlayFx(multiplierDeactivation_sfx);
 		}
 
 		App->player->multiplierTime++;
@@ -406,6 +408,7 @@ update_status ModuleSceneIntro::Update()
 			LOG("Deactivating x3 multiplier");
 			App->player->multiplierx3IsActive = false;
 			App->player->multiplierTime = 0;
+			App->audio->PlayFx(multiplierDeactivation_sfx);
 		}
 		App->player->multiplierTime++;
 	}

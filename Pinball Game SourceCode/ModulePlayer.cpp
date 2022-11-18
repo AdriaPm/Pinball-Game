@@ -26,17 +26,20 @@ bool ModulePlayer::Start()
 	alive = true;
 	godMode = false;
 	LOG("Loading player");
-	texturePath = ("Assets/Textures/sprite_sheet.png");
-	texture = App->textures->Load(texturePath);
+	//Load tex
+	texture = App->textures->Load("Assets/Textures/sprite_sheet.png");
 
+	//Load SFX
 	flipper_sfx = App->audio->LoadFx("Assets/Audio/FX/flipper.wav");
 	bonus_sfx = App->audio->LoadFx("Assets/Audio/FX/bonus.wav");
 	bumper_sfx = App->audio->LoadFx("Assets/Audio/FX/bumper.wav");
 	FlipperPush_sfx = App->audio->LoadFx("Assets/Audio/FX/FlipperPush.wav");
 	extraLife_sfx = App->audio->LoadFx("Assets/Audio/FX/extraLife.wav");
+	multiplierActivation_sfx = App->audio->LoadFx("Assets/Audio/FX/multiplierActivation.wav");
+	resetBall_sfx = App->audio->LoadFx("Assets/Audio/FX/resetBall.wav");
 
 	startPos.x = 689;
-	startPos.y = 591;
+	startPos.y = 588;
 	
 	position.x = startPos.x;
 	position.y = startPos.y;
@@ -76,7 +79,7 @@ update_status ModulePlayer::Update()
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
 		currentAnim = &rollingAnim;
 
-	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
 		App->player->ResetPosition();
 	
 	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
@@ -251,10 +254,12 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 	case ColliderType::x2:
 		LOG("Collision x2 Multiplier");
 		multiplierx2IsActive = true;
+		App->audio->PlayFx(multiplierActivation_sfx);
 		break;
 	case ColliderType::x3:
 		LOG("Collision x3 Multiplier");
 		multiplierx3IsActive = true;
+		App->audio->PlayFx(multiplierActivation_sfx);
 		break;
 	case ColliderType::ROLLOVER:
 		LOG("Collision ROLLOVER");
@@ -273,6 +278,7 @@ void ModulePlayer::ResetPosition() {
 	pbody->body->SetTransform(PIXEL_TO_METERS(startPos), 0);
 	deadBall = false;
 	deadTime = 0;
+	App->audio->PlayFx(resetBall_sfx);
 }
 
 void ModulePlayer::Bonus() {

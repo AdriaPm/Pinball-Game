@@ -40,15 +40,14 @@ bool TitleScreen::Start()
 
 	LOG("--STARTS TITLE SCENE--");
 
+	//Load music
+	App->audio->PlayMusic("Assets/Audio/Music/TitleScreen.ogg");
+	
+	//Load SFX
 	selectSFX = App->audio->LoadFx("Assets/Audio/Fx/CoinInsert.wav");
 
 	img = App->textures->Load("Assets/Textures/TitleScreen.png");
 
-	// Music
-	/*App->audio->PlayMusic("Assets/Audio/Music/title_screen.ogg");*/
-
-	// Load SFXs
-	/*startSFX = app->audio->LoadFx("Assets/Audio/Fx/start_game.wav");*/
 
 	return ret;
 }

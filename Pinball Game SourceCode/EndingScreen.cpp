@@ -43,11 +43,14 @@ bool EndingScreen::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
 	LOG("--STARTS ENDING SCENE--");
-	
-	img = App->textures->Load("Assets/Textures/EndingScreen.png");
+
+	//Load music
+	App->audio->PlayMusic("Assets/Audio/Music/EndingScreen.ogg");
+
+	//Load SFX
 	startSFX = App->audio->LoadFx("Assets/Audio/Fx/start_game.wav");
-	
-	App->audio->PlayMusic("Assets/Audio/Music/gameOver.ogg", 1.0f);
+
+	img = App->textures->Load("Assets/Textures/EndingScreen.png");
 	
 	return true;
 }

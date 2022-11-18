@@ -41,6 +41,8 @@ public:
 	uint bonus_sfx;
 	uint bumper_sfx;
 	uint extraLife_sfx;
+	uint multiplierActivation_sfx;
+	uint resetBall_sfx;
 
 	bool alive;
 	uint lives = 3;
