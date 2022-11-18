@@ -131,11 +131,11 @@ bool ModuleSceneIntro::Start()
 	through = App->physics->CreateRectangleSensor(SCREEN_WIDTH/2 - 32, (SCREEN_HEIGHT-32) + 16, 64*3, 1, b2BodyType::b2_staticBody, ColliderType::THROUGH);
 
 	//100 points Collider
-	App->physics->CreateCircle(298, 244, 14, b2BodyType::b2_staticBody, ColliderType::BUMPER);
-	App->physics->CreateCircle(405, 244, 14, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+	App->physics->CreateCircle(298, 244, 14, b2BodyType::b2_staticBody, ColliderType::_100PTS);
+	App->physics->CreateCircle(405, 244, 14, b2BodyType::b2_staticBody, ColliderType::_100PTS);
 
 	//200 points Collider
-	App->physics->CreateCircle(352, 217, 14, b2BodyType::b2_staticBody, ColliderType::BUMPER);
+	App->physics->CreateCircle(352, 217, 14, b2BodyType::b2_staticBody, ColliderType::_200PTS);
 
 	//x3 multiplier Collider
 	App->physics->CreateCircle(144, 150, 14, b2BodyType::b2_staticBody, ColliderType::x3);
