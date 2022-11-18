@@ -17,8 +17,6 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 	ray_on = false;
 	sensed = false;
 
-	//Init Animations
-
 
 }
 
@@ -138,6 +136,12 @@ bool ModuleSceneIntro::Start()
 
 	//200 points Collider
 	App->physics->CreateCircle(352, 217, 14, b2BodyType::b2_staticBody, ColliderType::_200PTS);
+
+	//x3 multiplier Collider
+	App->physics->CreateCircle(144, 150, 14, b2BodyType::b2_staticBody, ColliderType::x3);
+
+	//x2 multiplier Collider
+	App->physics->CreateCircle(560, 150, 14, b2BodyType::b2_staticBody, ColliderType::x2);
 
 	//Bumpers Colliders
 	App->physics->CreateCircle(197, 332, 14, b2BodyType::b2_staticBody, ColliderType::BUMPER);
@@ -383,11 +387,34 @@ update_status ModuleSceneIntro::Update()
 		currentAnim = &flipperDown;
 
 
+	//Check if MULTIPLIERS are ACTIVATED
+	//X2 Multiplier
+	if (App->player->multiplierx2IsActive == true) {
+		if (App->player->multiplierTime > 600)  //Time multiplier is active is 10 seconds
+		{
+			LOG("Deactivating x2 multiplier");
+			App->player->multiplierx2IsActive = false;
+			App->player->multiplierTime = 0;
+		}
+
+		App->player->multiplierTime++;
+	}
+	//X3 Multiplier
+	if (App->player->multiplierx3IsActive == true) {
+		if (App->player->multiplierTime > 300) //Time multiplier is active is 5 seconds
+		{
+			LOG("Deactivating x3 multiplier");
+			App->player->multiplierx3IsActive = false;
+			App->player->multiplierTime = 0;
+		}
+		App->player->multiplierTime++;
+	}
+
+
 	//Blit Kicker anims
 	SDL_Rect rect = currentAnim->GetCurrentFrame();
 	App->renderer->Blit(texture, 677, 680, &rect);
 	currentAnim->Update();
-	
 
 	return UPDATE_CONTINUE;
 }

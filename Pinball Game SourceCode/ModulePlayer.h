@@ -47,6 +47,11 @@ public:
 	int highscore = 0;
 
 	bool bonusIsActive = false;
+
+	bool multiplierx2IsActive = false;
+	bool multiplierx3IsActive = false;
+
+	int multiplierTime = 0;
 private:
 
 	bool godMode;

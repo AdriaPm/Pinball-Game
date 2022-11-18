@@ -149,21 +149,21 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
 		bounceImpulse = { (velocity.x *= -1), (velocity.y *= -1) };
-		pbody->body->ApplyLinearImpulse(bounceImpulse*RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
+		//pbody->body->ApplyLinearImpulse(bounceImpulse*RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
 		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::LEFT_GREENBUMPER:
 		LOG("Collision BUMPER");
 		bounceImpulse = { -1.0f, -0.5f };
 		bounceImpulse.Normalize();
-		pbody->body->ApplyLinearImpulse(bounceImpulse * RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
+		//pbody->body->ApplyLinearImpulse(bounceImpulse * RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
 		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::RIGHT_GREENBUMPER:
 		LOG("Collision BUMPER");
 		bounceImpulse = { 1.0f, -0.5f };
 		bounceImpulse.Normalize();
-		pbody->body->ApplyLinearImpulse(bounceImpulse * RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
+		//pbody->body->ApplyLinearImpulse(bounceImpulse * RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
 		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::RIGHTUP_SLINGSHOT:
@@ -183,23 +183,55 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		break;
 	case ColliderType::_100PTS:
 		LOG("Collision 100pts");
-		score += 100;
-		if(highscore + 100 <= score)
-			highscore += 100;
+		if (multiplierx2IsActive == true)
+		{
+			score += 100*2;
+			if (highscore + 100 <= score)
+				highscore += 100*2;
+		}
+		else if (multiplierx3IsActive == true) 
+		{
+			score += 100*3;
+			if (highscore + 100 <= score)
+				highscore += 100*3;
+		}
+		else 
+		{
+			score += 100;
+			if (highscore + 100 <= score)
+				highscore += 100;
+		}
 		App->audio->PlayFx(bonus_sfx);
 		break;
 	case ColliderType::_200PTS:
 		LOG("Collision 200pts");
-		score += 200;
-		if (highscore + 100 <= score)
-			highscore += 200 ;
+		if (multiplierx2IsActive == true)
+		{
+			score += 200 * 2;
+			if (highscore + 100 <= score)
+				highscore += 200 * 2;
+		}
+		else if (multiplierx3IsActive == true)
+		{
+			score += 200 * 3;
+			if (highscore + 100 <= score)
+				highscore += 200 * 3;
+		}
+		else 
+		{
+			score += 200;
+			if (highscore + 100 <= score)
+				highscore += 200;
+		}
 		App->audio->PlayFx(bonus_sfx);
 		break;
 	case ColliderType::x2:
-		score *= 2;
+		LOG("Collision x2 Multiplier");
+		multiplierx2IsActive = true;
 		break;
 	case ColliderType::x3:
-		score *= 3;
+		LOG("Collision x3 Multiplier");
+		multiplierx3IsActive = true;
 		break;
 	case ColliderType::ROLLOVER:
 		LOG("Collision ROLLOVER");
@@ -213,7 +245,6 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 
 void ModulePlayer::ResetPosition() {
 
-	// NOT WORKING!!!!!!!!!!!!
 	//Reset ball's position to initial position
 	LOG("Reseting BALL POSITION");
 	pbody->body->SetTransform(PIXEL_TO_METERS(startPos), 0);
