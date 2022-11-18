@@ -162,7 +162,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		bounceImpulse.Normalize();
 		bounces++;
 		if (bounces >= 3) {
-			bounceImpulse = { -5.0f, -3.0f };
+			bounceImpulse = { -1.25f, -0.75f };
 			bounces = 0;
 		}
 		pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
@@ -174,7 +174,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		bounceImpulse.Normalize();
 		bounces++;
 		if (bounces >= 3) {
-			bounceImpulse = { -5.0f, -3.0f };
+			bounceImpulse = { 1.25f, -0.75f };
 			bounces = 0;
 		}
 		pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
@@ -186,7 +186,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		bounceImpulse.Normalize();
 		bounces++;
 		if (bounces >= 3) {
-			bounceImpulse = { -5.0f, -3.0f };
+			bounceImpulse = { -1.25f, -0.75f };
 			bounces = 0;
 		}
 		pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
@@ -198,7 +198,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		bounceImpulse.Normalize();
 		bounces++;
 		if (bounces >= 3) {
-			bounceImpulse = { 5.0f, -3.0f };
+			bounceImpulse = { 1.25f, -0.75f };
 			bounces = 0;
 		}
 		pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
