@@ -74,10 +74,10 @@ bool ModuleSceneIntro::Start()
 	flipperJointDef_left.Initialize(leftFlipper->body, leftFlipperJoint->body, leftFlipperJoint->body->GetWorldCenter());
 	flipperJointDef_right.Initialize(rightFlipper->body, rightFlipperJoint->body, rightFlipperJoint->body->GetWorldCenter());
 
-	flipperJointDef_left.lowerAngle = -0.2f * b2_pi;
-	flipperJointDef_left.upperAngle = 0.2f * b2_pi;
-	flipperJointDef_right.lowerAngle = -0.2f * b2_pi;
-	flipperJointDef_right.upperAngle = 0.2f * b2_pi;
+	flipperJointDef_left.lowerAngle = -0.1f * b2_pi;
+	flipperJointDef_left.upperAngle = 0.15f * b2_pi;
+	flipperJointDef_right.lowerAngle = -0.15f * b2_pi;
+	flipperJointDef_right.upperAngle = 0.1f * b2_pi;
 	
 	flipperJointDef_left.enableLimit = true;
 	flipperJointDef_right.enableLimit = true;

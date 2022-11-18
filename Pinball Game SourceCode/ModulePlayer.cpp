@@ -88,16 +88,16 @@ update_status ModulePlayer::Update()
 
 	//Flippers' input
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
-		App->scene_intro->rightFlipper->body->ApplyTorque(150.0f, true);
+		App->scene_intro->rightFlipper->body->ApplyTorque(200.0f, true);
 	}
 	else
-		App->scene_intro->rightFlipper->body->ApplyTorque(-25.0f, true);
+		App->scene_intro->rightFlipper->body->ApplyTorque(-50.0f, true);
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT){
-		App->scene_intro->leftFlipper->body->ApplyTorque(-150.0f, true);
+		App->scene_intro->leftFlipper->body->ApplyTorque(-200.0f, true);
 	}
 	else
-		App->scene_intro->leftFlipper->body->ApplyTorque(25.0f, true);
+		App->scene_intro->leftFlipper->body->ApplyTorque(50.0f, true);
 
 	if (deadBall) {
 		
