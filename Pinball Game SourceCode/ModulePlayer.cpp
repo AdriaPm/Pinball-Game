@@ -148,14 +148,9 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
-<<<<<<< Updated upstream
-		bounceImpulse = { (velocity.x *= -1), (velocity.y *= -1) };
-		//pbody->body->ApplyLinearImpulse(bounceImpulse*RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
-=======
 		bounceImpulse = { pbody->body->GetWorldCenter() - physB->body->GetWorldCenter() };
 		bounceImpulse.Normalize();
 		pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
->>>>>>> Stashed changes
 		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::RIGHTDOWN_SLINGSHOT:
@@ -163,9 +158,6 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		
 		bounceImpulse = { -1.0f, -0.5f };
 		bounceImpulse.Normalize();
-<<<<<<< Updated upstream
-		//pbody->body->ApplyLinearImpulse(bounceImpulse * RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
-=======
 		bounces++;
 		if (bounces < 5) {
 			pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
@@ -174,16 +166,12 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 			pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * 1.25 * bounceImpulse, pbody->body->GetWorldCenter(), true);
 			bounces = 0;
 		}
->>>>>>> Stashed changes
 		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::LEFTDOWN_SLINGSHOT:
 		LOG("Collision Left Down Slingshot");
 		bounceImpulse = { 1.0f, -0.5f };
 		bounceImpulse.Normalize();
-<<<<<<< Updated upstream
-		//pbody->body->ApplyLinearImpulse(bounceImpulse * RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
-=======
 		bounces++;
 		if (bounces < 5) {
 			pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
@@ -192,7 +180,6 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 			pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * 1.25 * bounceImpulse, pbody->body->GetWorldCenter(), true);
 			bounces = 0;
 		}
->>>>>>> Stashed changes
 		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::RIGHTUP_SLINGSHOT:
