@@ -59,5 +59,6 @@ private:
 
 	b2Vec2 startPos;
 	b2Vec2 velocity;
+	b2Vec2 bounceImpulse;
 
 };

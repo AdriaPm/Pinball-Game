@@ -126,7 +126,7 @@ update_status ModulePlayer::Update()
 void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 {
 	//Bumper's vector impulse when ball hits one of them
-	b2Vec2 bumperImpulse = { (velocity.x *= -1) * RESTITUTION_COEF, (velocity.y *= -1) * RESTITUTION_COEF };
+	//b2Vec2 bumperImpulse = { (velocity.x *= -1) * RESTITUTION_COEF, (velocity.y *= -1) * RESTITUTION_COEF };
 	
 	switch (physB->cType)
 	{
@@ -148,10 +148,34 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
-		pbody->body->ApplyLinearImpulse(bumperImpulse, pbody->body->GetWorldCenter(), true);
+		bounceImpulse = { (velocity.x *= -1), (velocity.y *= -1) };
+		pbody->body->ApplyLinearImpulse(bounceImpulse*RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
 		App->audio->PlayFx(bumper_sfx);
 		break;
-	case ColliderType::SLINGSHOT:
+	case ColliderType::LEFT_GREENBUMPER:
+		LOG("Collision BUMPER");
+		bounceImpulse = { -1.0f, -0.5f };
+		bounceImpulse.Normalize();
+		pbody->body->ApplyLinearImpulse(bounceImpulse * RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
+		App->audio->PlayFx(bumper_sfx);
+		break;
+	case ColliderType::RIGHT_GREENBUMPER:
+		LOG("Collision BUMPER");
+		bounceImpulse = { 1.0f, -0.5f };
+		bounceImpulse.Normalize();
+		pbody->body->ApplyLinearImpulse(bounceImpulse * RESTITUTION_COEF, pbody->body->GetWorldCenter(), true);
+		App->audio->PlayFx(bumper_sfx);
+		break;
+	case ColliderType::RIGHTUP_SLINGSHOT:
+		LOG("Collision SLINGSHOT");
+		break;
+	case ColliderType::RIGHTDOWN_SLINGSHOT:
+		LOG("Collision SLINGSHOT");
+		break;
+	case ColliderType::LEFTUP_SLINGSHOT:
+		LOG("Collision SLINGSHOT");
+		break;
+	case ColliderType::LEFTDOWN_SLINGSHOT:
 		LOG("Collision SLINGSHOT");
 		break;
 	case ColliderType::BONUS:

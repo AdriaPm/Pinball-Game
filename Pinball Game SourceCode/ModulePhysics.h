@@ -20,7 +20,12 @@ enum class ColliderType {
 	BONUS,
 	FLIPPER, // Ball hitter
 	BUMPER, //Circle that makes bounce
-	SLINGSHOT, //Triangle that bounces
+	LEFT_GREENBUMPER, //Circle that makes bounce
+	RIGHT_GREENBUMPER,
+	LEFTDOWN_SLINGSHOT, //Triangle that bounces
+	LEFTUP_SLINGSHOT,
+	RIGHTDOWN_SLINGSHOT, 
+	RIGHTUP_SLINGSHOT,
 	ROLLOVER, //Let pass or not the ball if a bool is active
 	THROUGH,
 	TRIGGER,
