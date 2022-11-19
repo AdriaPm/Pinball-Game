@@ -23,6 +23,7 @@ public:
 	int GetScore() { return score; }
 	int GetHighScore() { return highscore; }
 	int GetLives() { return lives; }
+	int GetPrevScore() { return previousScore; }
 
 public:
 
@@ -49,6 +50,7 @@ public:
 
 	int score = 0;
 	int highscore = 0;
+	int previousScore = 0;
 
 	bool bonusIsActive = false;
 

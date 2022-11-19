@@ -34,6 +34,7 @@ bool EndingScreen::Start()
 	LOG("Loading EndingScreen");
 	bool ret = true;
 
+	App->player->previousScore = App->player->score;
 	App->player->lives = 3;
 	App->player->ResetPosition();
 

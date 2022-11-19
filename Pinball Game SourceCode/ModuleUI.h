@@ -24,6 +24,7 @@ public:
 	void BlitScore();
 	void BlitHighScore();
 	void BlitLives();
+	void BlitPrevScore();
 
 	uint font_id = -1;
 

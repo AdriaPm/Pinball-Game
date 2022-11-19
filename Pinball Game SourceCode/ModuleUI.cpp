@@ -65,3 +65,10 @@ void ModuleUI::BlitLives()
 	sprintf_s(livesText, 10, "%d", App->player->GetLives());
 	App->font->BlitText(655, 39, font_id, livesText);
 }
+
+void ModuleUI::BlitPrevScore()
+{
+	char livesText[10];
+	sprintf_s(livesText, 10, "%d", App->player->GetPrevScore());
+	App->font->BlitText(92, 730, font_id, livesText);
+}

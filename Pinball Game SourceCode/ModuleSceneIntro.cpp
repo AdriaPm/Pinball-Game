@@ -43,7 +43,7 @@ bool ModuleSceneIntro::Start()
 	texture = App->textures->Load("Assets/Textures/sprite_sheet.png");
 	leftFlipperTex = App->textures->Load("Assets/Textures/leftFlipper.png");
 	rightFlipperTex = App->textures->Load("Assets/Textures/rightFlipper.png");
-	scene = App->textures->Load("Assets/Textures/Pinball_Scene.png");
+	scene = App->textures->Load("Assets/Textures/Pinball_Scene_FINAL.png");
 
 	//Load SFX
 	kicker_sfx = App->audio->LoadFx("Assets/Audio/FX/kicker.wav");
@@ -408,6 +408,7 @@ update_status ModuleSceneIntro::Update()
 	App->ui->BlitScore();
 	App->ui->BlitHighScore();
 	App->ui->BlitLives();
+	App->ui->BlitPrevScore();
 	
 	//Spring animation
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
