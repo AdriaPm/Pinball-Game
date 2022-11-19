@@ -25,7 +25,6 @@ bool ModuleUI::Start()
 
 	font_id = App->font->Load("Assets/Textures/font.png", "0123456789", 1);
 
-
 	return ret;
 }
 
@@ -68,7 +67,7 @@ void ModuleUI::BlitLives()
 
 void ModuleUI::BlitPrevScore()
 {
-	char livesText[10];
-	sprintf_s(livesText, 10, "%d", App->player->GetPrevScore());
-	App->font->BlitText(92, 730, font_id, livesText);
+	char prevScoreText[10];
+	sprintf_s(prevScoreText, 10, "%d", App->player->GetPrevScore());
+	App->font->BlitText(92, 730, font_id, prevScoreText);
 }

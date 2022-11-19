@@ -23,9 +23,10 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
+	LOG("Loading player");
 	alive = true;
 	godMode = false;
-	LOG("Loading player");
+
 	//Load tex
 	texture = App->textures->Load("Assets/Textures/sprite_sheet.png");
 
@@ -44,6 +45,7 @@ bool ModulePlayer::Start()
 	position.x = startPos.x;
 	position.y = startPos.y;
 
+	//Load animations
 	idleAnim.PushBack({ 138, 1, 27, 27 });
 
 	rollingAnim.PushBack({ 138, 1, 27, 27 });
@@ -76,12 +78,11 @@ update_status ModulePlayer::Update()
 {
 	currentAnim = &idleAnim;
 	
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
-		currentAnim = &rollingAnim;
-
+	//Reset function (R key)
 	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
 		App->player->ResetPosition();
 	
+	//Impulse function (F key)
 	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
 	{
 		b2Vec2 impulse = { 0, -1 };
@@ -102,6 +103,7 @@ update_status ModulePlayer::Update()
 	else
 		App->scene_intro->leftFlipper->body->ApplyTorque(50.0f, true);
 
+	//Ball reset when dying
 	if (deadBall) {
 		
 		deadTime++;
@@ -109,7 +111,6 @@ update_status ModulePlayer::Update()
 			{
 				ResetPosition();
 			}
-		
 	}
 
 	//Bonus function (1 extra life if score 1000)
@@ -127,10 +128,7 @@ update_status ModulePlayer::Update()
 }
 
 void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
-{
-	//Bumper's vector impulse when ball hits one of them
-	//b2Vec2 bumperImpulse = { (velocity.x *= -1) * RESTITUTION_COEF, (velocity.y *= -1) * RESTITUTION_COEF };
-	
+{	
 	switch (physB->cType)
 	{
 	case ColliderType::WALL:

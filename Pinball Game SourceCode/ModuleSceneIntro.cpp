@@ -17,7 +17,6 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 	ray_on = false;
 	sensed = false;
 
-
 }
 
 ModuleSceneIntro::~ModuleSceneIntro()
@@ -30,9 +29,11 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 
+	//Enable modules/entities
 	App->physics->Enable();
 	App->player->Enable();
 	
+	//Reset player parameters
 	App->player->score = 0;
 	App->player->bonusIsActive = false;
 
@@ -46,13 +47,13 @@ bool ModuleSceneIntro::Start()
 	scene = App->textures->Load("Assets/Textures/Pinball_Scene_FINAL.png");
 
 	//Load SFX
-	kicker_sfx = App->audio->LoadFx("Assets/Audio/FX/kicker.wav");
+	kicker_sfx = App->audio->LoadFx("Assets/Audio/FX/kicker2.wav");
 	multiplierDeactivation_sfx = App->audio->LoadFx("Assets/Audio/FX/multiplierDeactivation.wav");
 
 	//Load Music
 	App->audio->PlayMusic("Assets/Audio/Music/song.ogg", 1.0f);
 	
-	//Animations
+	//Load animations
 	flipperUp.PushBack({ 0, 74, 22, 56});
 	
 	flipperCompressing.PushBack({ 36, 74, 22, 56});
@@ -414,8 +415,10 @@ update_status ModuleSceneIntro::Update()
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 		currentAnim = &flipperCompressing;
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
+	{
 		flipperCompressing.Reset();
-
+		App->audio->PlayFx(kicker_sfx);
+	}
 
 	//Check if MULTIPLIERS are ACTIVATED
 	//X2 Multiplier
@@ -454,12 +457,10 @@ update_status ModuleSceneIntro::Update()
 void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
 	
-
 	// Do something else. You can also check which bodies are colliding (sensor? ball? player?)
 }
 
 void ModuleSceneIntro::Shot() {
-	/*statusforonshooter = true*/
 
 	//Shooter prepares Ball
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {

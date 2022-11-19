@@ -21,7 +21,7 @@
 
 TitleScreen::TitleScreen(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	/*name.Create("TitleScreen");*/
+
 }
 
 // Destructor
@@ -34,11 +34,11 @@ bool TitleScreen::Start()
 	LOG("Loading TitleScreen");
 	bool ret = true;
 
+	//Disable modules/entities
 	App->player->Disable();
 
+	// Set camera position
 	App->renderer->camera.x = App->renderer->camera.y = 0;
-
-	LOG("--STARTS TITLE SCENE--");
 
 	//Load music
 	App->audio->PlayMusic("Assets/Audio/Music/TitleScreen.ogg");
@@ -46,6 +46,7 @@ bool TitleScreen::Start()
 	//Load SFX
 	selectSFX = App->audio->LoadFx("Assets/Audio/Fx/CoinInsert.wav");
 
+	//Load tex
 	img = App->textures->Load("Assets/Textures/TitleScreen.png");
 
 
@@ -56,18 +57,19 @@ bool TitleScreen::Start()
 // Called each loop iteration
 update_status TitleScreen::Update()
 {
+	//Pass next screen
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
 		LOG("PASA A GAME SCENE");
 		App->fade->FadeBlack(App->title, (Module*)App->scene_intro, 90);
 		App->audio->PlayFx(selectSFX);
 	}
 
-	App->renderer->Blit(img, 0, 0, NULL);
-
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN) {
 		return UPDATE_STOP;
 	}
-		
+
+	App->renderer->Blit(img, 0, 0, NULL);
+
 	return UPDATE_CONTINUE;
 }
 

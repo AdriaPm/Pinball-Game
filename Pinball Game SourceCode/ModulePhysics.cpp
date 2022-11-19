@@ -39,9 +39,6 @@ bool ModulePhysics::Start()
 	// Set this module as a listener for contacts
 	world->SetContactListener(this);
 
-	// Create the main static ground of the scenario: a big circle in the middle of the screen
-	//CreateScenarioGround();
-
 	// Create a static, shapeless ground body
 	// This will be used to create joints like a mouse joint
 	b2BodyDef bd;
@@ -155,8 +152,7 @@ update_status ModulePhysics::PostUpdate()
 				break;
 			}
 
-			// TODO 1: If mouse button 1 is pressed ...
-			// App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN
+			//Mouse joint
 			if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN && debug == true)
 			{
 				// test if the current body contains mouse position
@@ -201,7 +197,7 @@ update_status ModulePhysics::PostUpdate()
 
 
 
-	// TODO 3: If the player keeps pressing the mouse button, update
+	// If the player keeps pressing the mouse button, update
 	// target position and draw a red line between both anchor points
 	if (mouse_body != nullptr && mouse_joint != nullptr)
 	{
@@ -244,33 +240,6 @@ bool ModulePhysics::CleanUp()
 	delete world;
 
 	return true;
-}
-
-void ModulePhysics::CreateScenarioGround()
-{
-	// Get coordinates of the screen center and radius
-	int x = SCREEN_WIDTH / 2;
-	int y = SCREEN_HEIGHT / 1.5f;
-	int diameter = SCREEN_WIDTH / 2;
-
-	// Create a static body in the middle of the screen
-	b2BodyDef body;
-	body.type = b2_staticBody;
-	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
-
-	// Add this static body to the World
-	b2Body* big_ball = world->CreateBody(&body);
-
-	// Create a big circle shape
-	b2CircleShape shape;
-	shape.m_radius = PIXEL_TO_METERS(diameter) * 0.5f;
-
-	// Create a fixture and associate the circle to it
-	b2FixtureDef fixture;
-	fixture.shape = &shape;
-
-	// Add the ficture (plus shape) to the static body
-	big_ball->CreateFixture(&fixture);
 }
 
 PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius, b2BodyType bType, ColliderType ctype)

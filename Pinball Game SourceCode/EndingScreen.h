@@ -33,5 +33,4 @@ private:
 
 };
 
-
 #endif // !__ENDINGSCREEN_H__
