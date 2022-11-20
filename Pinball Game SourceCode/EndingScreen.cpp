@@ -35,7 +35,6 @@ bool EndingScreen::Start()
 	bool ret = true;
 
 	//Reset player's parameters
-	App->player->previousScore = App->player->score;
 	App->player->lives = 3;
 	App->player->ResetPosition();
 
@@ -73,6 +72,10 @@ update_status EndingScreen::Update()
 	}
 
 	App->renderer->Blit(img, 0, 0, NULL);
+
+	App->ui->BlitFinalScore();
+	App->ui->BlitFinalHighScore();
+	App->ui->BlitFinalPrevScore();
 
 	return UPDATE_CONTINUE;
 }

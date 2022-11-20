@@ -71,3 +71,24 @@ void ModuleUI::BlitPrevScore()
 	sprintf_s(prevScoreText, 10, "%d", App->player->GetPrevScore());
 	App->font->BlitText(92, 730, font_id, prevScoreText);
 }
+
+void ModuleUI::BlitFinalScore()
+{
+	char finalScoreText[10];
+	sprintf_s(finalScoreText, 10, "%d", App->player->GetScore());
+	App->font->BlitText(423, 332, font_id, finalScoreText);
+}
+
+void ModuleUI::BlitFinalHighScore()
+{
+	char finalHighScoreText[10];
+	sprintf_s(finalHighScoreText, 10, "%d", App->player->GetHighScore());
+	App->font->BlitText(423, 402, font_id, finalHighScoreText);
+}
+
+void ModuleUI::BlitFinalPrevScore()
+{
+	char finalPrevScoreText[10];
+	sprintf_s(finalPrevScoreText, 10, "%d", App->player->GetPrevScore());
+	App->font->BlitText(423, 493, font_id, finalPrevScoreText);
+}

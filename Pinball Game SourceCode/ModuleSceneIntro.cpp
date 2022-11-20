@@ -34,6 +34,7 @@ bool ModuleSceneIntro::Start()
 	App->player->Enable();
 	
 	//Reset player parameters
+	App->player->previousScore = App->player->score;
 	App->player->score = 0;
 	App->player->bonusIsActive = false;
 
