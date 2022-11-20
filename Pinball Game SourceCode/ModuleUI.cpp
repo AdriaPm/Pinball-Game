@@ -92,3 +92,15 @@ void ModuleUI::BlitFinalPrevScore()
 	sprintf_s(finalPrevScoreText, 10, "%d", App->player->GetPrevScore());
 	App->font->BlitText(423, 493, font_id, finalPrevScoreText);
 }
+
+void ModuleUI::BlitChangeFPS() {
+	char changeFPS[4];
+	sprintf_s(changeFPS, 4, "%d", App->fps);
+	App->font->BlitText(423, 493, font_id, changeFPS);
+}
+
+void ModuleUI::BlitChangeGravity() {
+	char changeGravity[4];
+	sprintf_s(changeGravity, 4, "%d", App->physics->gravity.y);
+	App->font->BlitText(423, 493, font_id, changeGravity);
+}

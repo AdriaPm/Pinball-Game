@@ -77,54 +77,48 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 	currentAnim = &idleAnim;
-	
-	if (App->scene_intro->pause) {
-		pbody->body->SetAwake(false);
-	}
-	else {
-		pbody->body->SetAwake(true);
-		//Reset function (R key)
-		if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
-			App->player->ResetPosition();
 
-		//Impulse function (F key)
-		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
+	//Reset function (R key)
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
+		App->player->ResetPosition();
+
+	//Impulse function (F key)
+	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
+	{
+		b2Vec2 impulse = { 0, -1 };
+
+		pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
+	}
+
+	//Flippers' input
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
+		App->scene_intro->rightFlipper->body->ApplyTorque(200.0f, true);
+	}
+	else
+		App->scene_intro->rightFlipper->body->ApplyTorque(-50.0f, true);
+
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
+		App->scene_intro->leftFlipper->body->ApplyTorque(-200.0f, true);
+	}
+	else
+		App->scene_intro->leftFlipper->body->ApplyTorque(50.0f, true);
+
+	//Ball reset when dying
+	if (deadBall) {
+
+		deadTime++;
+		if (deadTime >= 60)
 		{
-			b2Vec2 impulse = { 0, -1 };
-
-			pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
+			ResetPosition();
 		}
-
-		//Flippers' input
-		if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
-			App->scene_intro->rightFlipper->body->ApplyTorque(200.0f, true);
-		}
-		else
-			App->scene_intro->rightFlipper->body->ApplyTorque(-50.0f, true);
-
-		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
-			App->scene_intro->leftFlipper->body->ApplyTorque(-200.0f, true);
-		}
-		else
-			App->scene_intro->leftFlipper->body->ApplyTorque(50.0f, true);
-
-		//Ball reset when dying
-		if (deadBall) {
-
-			deadTime++;
-			if (deadTime >= 60)
-			{
-				ResetPosition();
-			}
-		}
-
-		//Bonus function (1 extra life if score 1000)
-		App->player->Bonus();
-
-		/* Link player's texture with pbody when moving */
-		position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x - (27 / 2));
-		position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y - (27 / 2));
 	}
+
+	//Bonus function (1 extra life if score 1000)
+	App->player->Bonus();
+
+	/* Link player's texture with pbody when moving */
+	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x - (27 / 2));
+	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y - (27 / 2));
 
 	SDL_Rect rect = currentAnim->GetCurrentFrame();
 	App->renderer->Blit(texture, position.x, position.y, &rect);

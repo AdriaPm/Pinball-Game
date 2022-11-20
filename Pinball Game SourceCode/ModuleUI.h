@@ -30,6 +30,9 @@ public:
 	void BlitFinalHighScore();
 	void BlitFinalPrevScore();
 
+	void BlitChangeFPS();
+	void BlitChangeGravity();
+
 	uint font_id = -1;
 
 private:

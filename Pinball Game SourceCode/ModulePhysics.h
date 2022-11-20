@@ -80,6 +80,8 @@ public:
 	// Box2D World
 	b2World* world;
 
+	b2Vec2 gravity;
+
 private:
 
 	// Debug mode

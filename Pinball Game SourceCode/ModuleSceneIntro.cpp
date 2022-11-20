@@ -357,85 +357,72 @@ bool ModuleSceneIntro::CleanUp()
 
 update_status ModuleSceneIntro::Update()
 {
-
-	if (App->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN) {
-		pause = !pause;
-	}
-
-	if (pause) {
-
-	}
-	else {
-		
-		currentAnim = &flipperUp;
-
-		// If user presses SPACE, enable RayCast
-		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
-		{
-			// Enable raycast mode
-			ray_on = !ray_on;
-
-			// Origin point of the raycast is be the mouse current position now (will not change)
-			ray.x = App->input->GetMouseX();
-			ray.y = App->input->GetMouseY();
-		}
-
-
-		// Prepare for raycast ------------------------------------------------------
-		// The target point of the raycast is the mouse current position (will change over game time)
-		iPoint mouse;
-		mouse.x = App->input->GetMouseX();
-		mouse.y = App->input->GetMouseY();
-
-		// Total distance of the raycast reference segment
-		int ray_hit = ray.DistanceTo(mouse);
-
-		// Declare a vector. We will draw the normal to the hit surface (if we hit something)
-		fVector normal(0.0f, 0.0f);
-
-		//Ball Shooter mechanic
-		Shot();
-
-		//Spring animation
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-			currentAnim = &flipperCompressing;
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
-		{
-			flipperCompressing.Reset();
-			App->audio->PlayFx(kicker_sfx);
-		}
-
-		//Check if MULTIPLIERS are ACTIVATED
-		//X2 Multiplier
-		if (App->player->multiplierx2IsActive == true) {
-			if (App->player->multiplierTime > 1200)  //Time multiplier is active is 10 seconds
-			{
-				LOG("Deactivating x2 multiplier");
-				App->player->multiplierx2IsActive = false;
-				App->player->multiplierTime = 0;
-				App->audio->PlayFx(multiplierDeactivation_sfx);
-			}
-
-			App->player->multiplierTime++;
-		}
-		//X3 Multiplier
-		if (App->player->multiplierx3IsActive == true) {
-			if (App->player->multiplierTime > 600) //Time multiplier is active is 5 seconds
-			{
-				LOG("Deactivating x3 multiplier");
-				App->player->multiplierx3IsActive = false;
-				App->player->multiplierTime = 0;
-				App->audio->PlayFx(multiplierDeactivation_sfx);
-			}
-			App->player->multiplierTime++;
-		}
-
-
-		
-	}
-
+	
 	//Draw Scene
 	App->renderer->Blit(scene, 0, 0, NULL);
+
+	currentAnim = &flipperUp;
+
+	// If user presses SPACE, enable RayCast
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	{
+		// Enable raycast mode
+		ray_on = !ray_on;
+
+		// Origin point of the raycast is be the mouse current position now (will not change)
+		ray.x = App->input->GetMouseX();
+		ray.y = App->input->GetMouseY();
+	}
+
+
+	// Prepare for raycast ------------------------------------------------------
+	// The target point of the raycast is the mouse current position (will change over game time)
+	iPoint mouse;
+	mouse.x = App->input->GetMouseX();
+	mouse.y = App->input->GetMouseY();
+
+	// Total distance of the raycast reference segment
+	int ray_hit = ray.DistanceTo(mouse);
+
+	// Declare a vector. We will draw the normal to the hit surface (if we hit something)
+	fVector normal(0.0f, 0.0f);
+
+	//Ball Shooter mechanic
+	Shot();
+
+	//Spring animation
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		currentAnim = &flipperCompressing;
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
+	{
+		flipperCompressing.Reset();
+		App->audio->PlayFx(kicker_sfx);
+	}
+
+	//Check if MULTIPLIERS are ACTIVATED
+	//X2 Multiplier
+	if (App->player->multiplierx2IsActive == true) {
+		if (App->player->multiplierTime > 1200)  //Time multiplier is active is 10 seconds
+		{
+			LOG("Deactivating x2 multiplier");
+			App->player->multiplierx2IsActive = false;
+			App->player->multiplierTime = 0;
+			App->audio->PlayFx(multiplierDeactivation_sfx);
+		}
+
+		App->player->multiplierTime++;
+	}
+	//X3 Multiplier
+	if (App->player->multiplierx3IsActive == true) {
+		if (App->player->multiplierTime > 600) //Time multiplier is active is 5 seconds
+		{
+			LOG("Deactivating x3 multiplier");
+			App->player->multiplierx3IsActive = false;
+			App->player->multiplierTime = 0;
+			App->audio->PlayFx(multiplierDeactivation_sfx);
+		}
+		App->player->multiplierTime++;
+	}
 
 	//Blit UI
 	App->ui->BlitScore();
@@ -467,7 +454,6 @@ update_status ModuleSceneIntro::Update()
 
 void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
-	
 	// Do something else. You can also check which bodies are colliding (sensor? ball? player?)
 }
 

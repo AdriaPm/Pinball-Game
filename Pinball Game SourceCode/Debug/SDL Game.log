@@ -1,14 +1,25 @@
-﻿  ModulePlayer.cpp
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(39,23): warning C4244: '=': conversión de 'float32' a 'TYPE'; posible pérdida de datos
+﻿  ModulePhysics.cpp
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(309,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(310,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(366,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(470,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(471,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModulePhysics.cpp(477,27): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
+  ModulePlayer.cpp
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(45,23): warning C4244: '=': conversion from 'float32' to 'TYPE', possible loss of data
           with
           [
               TYPE=int
           ]
-C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(40,23): warning C4244: '=': conversión de 'float32' a 'TYPE'; posible pérdida de datos
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\ModulePlayer.cpp(46,23): warning C4244: '=': conversion from 'float32' to 'TYPE', possible loss of data
           with
           [
               TYPE=int
           ]
-  SDL Game.vcxproj -> C:\Users\adria\Documents\GitHub\PinBall_Game\Pinball Game SourceCode\Debug\Box2D - Tutorial.exe
+  TitleScreen.cpp
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\Animation.h(83,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\Animation.h(85,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  SDL Game.vcxproj -> C:\Users\arnau\Documents\UPC CITM\GameDev\PinBall_Game\Pinball Game SourceCode\Debug\Box2D - Tutorial.exe
