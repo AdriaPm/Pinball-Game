@@ -110,7 +110,7 @@ void ModuleUI::BlitChangeGravity() {
 
 void ModuleUI::BlitChangeRestitutionCoeff() {
 	char changeRestitutionCoeff[50];
-	sprintf_s(changeRestitutionCoeff, 50, "restitution coefficient; %.2f", App->physics->restitutionCoeff);
+	sprintf_s(changeRestitutionCoeff, 50, "restitution coeff; %.2f", App->physics->restitutionCoeff);
 	App->font->BlitText(465, 733, font2_id, changeRestitutionCoeff);
 }
 

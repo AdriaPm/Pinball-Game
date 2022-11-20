@@ -8,6 +8,7 @@ Pinball game created for Physics II subject.
 
  - {F1} - View logic/colliders + enable mouse joints.
  - {R} - Reset ball's position
+ - {G} - Activate/Deactivate God Mode
 
  ##Debug keys
   - {U} - Adds +1 FPS

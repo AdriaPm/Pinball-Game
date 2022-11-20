@@ -140,7 +140,8 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		break;
 	case ColliderType::THROUGH:
 		LOG("Collision THROUGH");
-		lives--;
+		if(godMode == false)
+			lives--;
 		deadBall = true;
 		if (lives == 0)
 		{

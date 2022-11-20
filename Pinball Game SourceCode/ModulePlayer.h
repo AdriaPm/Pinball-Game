@@ -58,9 +58,9 @@ public:
 	bool multiplierx3IsActive = false;
 
 	int multiplierTime = 0;
-private:
 
 	bool godMode;
+private:
 	
 	bool deadBall = false;
 	int deadTime = 0;

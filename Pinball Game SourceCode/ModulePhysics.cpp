@@ -20,7 +20,7 @@ ModulePhysics::ModulePhysics(Application* app, bool start_enabled) : Module(app,
 	ground = NULL;
 	mouse_joint = NULL;
 	mouse_body = NULL;
-	debug = true;
+	debug = false;
 }
 
 // Destructor

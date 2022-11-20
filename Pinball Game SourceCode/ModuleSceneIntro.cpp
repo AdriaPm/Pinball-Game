@@ -53,6 +53,7 @@ bool ModuleSceneIntro::Start()
 	//Load SFX
 	kicker_sfx = App->audio->LoadFx("Assets/Audio/FX/kicker2.wav");
 	multiplierDeactivation_sfx = App->audio->LoadFx("Assets/Audio/FX/multiplierDeactivation.wav");
+	buttonClick_sfx = App->audio->LoadFx("Assets/Audio/FX/buttonClick.wav");
 
 	//Load Music
 	App->audio->PlayMusic("Assets/Audio/Music/song.ogg", 1.0f);
@@ -437,6 +438,30 @@ update_status ModuleSceneIntro::Update()
 		App->ui->BlitChangeRestitutionCoeff();
 		App->ui->BlitPlayerXPos();
 		App->ui->BlitPlayerYPos();
+
+		//Changes FPS
+		if (App->input->GetKey(SDL_SCANCODE_U) == KEY_DOWN)
+			App->fps++;
+		if (App->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN)
+			App->fps--;
+
+		//Changes Gravity
+		if (App->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN)
+			App->physics->gravity.y += 0.1;
+		if (App->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN)
+			App->physics->gravity.y -= 0.1;
+
+		//Changes Gravity
+		if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
+			App->physics->restitutionCoeff += 0.1;
+		if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+			App->physics->restitutionCoeff -= 0.1;
+	}
+
+	//Activate GodMode
+	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN) {
+		App->player->godMode = !App->player->godMode;
+		App->audio->PlayFx(buttonClick_sfx);
 	}
 
 	//Blit flippers
