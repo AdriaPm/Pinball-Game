@@ -435,6 +435,8 @@ update_status ModuleSceneIntro::Update()
 		App->ui->BlitChangeFPS();
 		App->ui->BlitChangeGravity();
 		App->ui->BlitChangeRestitutionCoeff();
+		App->ui->BlitPlayerXPos();
+		App->ui->BlitPlayerYPos();
 	}
 
 	//Blit flippers

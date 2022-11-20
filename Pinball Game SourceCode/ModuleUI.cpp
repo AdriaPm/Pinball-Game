@@ -99,17 +99,29 @@ void ModuleUI::BlitFinalPrevScore()
 void ModuleUI::BlitChangeFPS() {
 	char changeFPS[10];
 	sprintf_s(changeFPS, 10, "fps; %d", App->fps);
-	App->font->BlitText(465, 723, font2_id, changeFPS);
+	App->font->BlitText(465, 713, font2_id, changeFPS);
 }
 
 void ModuleUI::BlitChangeGravity() {
 	char changeGravity[25];
 	sprintf_s(changeGravity, 25, "gravity; %.2f m/s2", App->physics->gravity.y);
-	App->font->BlitText(465, 733, font2_id, changeGravity);
+	App->font->BlitText(465, 723, font2_id, changeGravity);
 }
 
 void ModuleUI::BlitChangeRestitutionCoeff() {
 	char changeRestitutionCoeff[50];
 	sprintf_s(changeRestitutionCoeff, 50, "restitution coefficient; %.2f", App->physics->restitutionCoeff);
-	App->font->BlitText(465, 743, font2_id, changeRestitutionCoeff);
+	App->font->BlitText(465, 733, font2_id, changeRestitutionCoeff);
+}
+
+void ModuleUI::BlitPlayerXPos() {
+	char playerXPos[25];
+	sprintf_s(playerXPos, 25, "position x; %d", App->player->position.x);
+	App->font->BlitText(465, 743, font2_id, playerXPos);
+}
+
+void ModuleUI::BlitPlayerYPos() {
+	char playerYPos[25];
+	sprintf_s(playerYPos, 25, "position y; %d", App->player->position.y);
+	App->font->BlitText(465, 753, font2_id, playerYPos);
 }
