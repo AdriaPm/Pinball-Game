@@ -21,7 +21,8 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 
 ModuleSceneIntro::~ModuleSceneIntro()
 {
-	// You should do some memory cleaning here, if required
+	App->player->Disable();
+	App->physics->Disable();
 }
 
 bool ModuleSceneIntro::Start()
@@ -33,6 +34,8 @@ bool ModuleSceneIntro::Start()
 	App->physics->Enable();
 	App->player->Enable();
 	
+	pause = false;
+
 	//Reset player parameters
 	App->player->previousScore = App->player->score;
 	App->player->score = 0;
@@ -121,8 +124,7 @@ bool ModuleSceneIntro::Start()
 	distance = 0;
 
 	/* COLLIDERS */
-	//Upper Wall Collider
-	//wall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH - 2, -64, b2BodyType::b2_staticBody, ColliderType::WALL);
+	//Wall Collider
 	int points2[63] = { 64, 512,
 					  144, 512,
 					  144, 602,
@@ -312,7 +314,6 @@ bool ModuleSceneIntro::Start()
 						142, 512,
 						64, 512};
 	wall = App->physics->CreateChain(0, 0, points8, 8, b2BodyType::b2_staticBody, ColliderType::LEFTUP_SLINGSHOT);
-	/*App->physics->CreateRectangle(105, 483, 85, 5, b2BodyType::b2_staticBody, ColliderType::BUMPER, 18.5);*/
 	
 	//Lower left bouncer
 	int points9[8] = { 145, 504,
@@ -320,7 +321,6 @@ bool ModuleSceneIntro::Start()
 						203, 623,
 						145, 602 };
 	wall = App->physics->CreateChain(0, 0, points9, 8, b2BodyType::b2_staticBody, ColliderType::LEFTDOWN_SLINGSHOT);
-	/*App->physics->CreateRectangle(175, 555, 115, 10, b2BodyType::b2_staticBody, ColliderType::BUMPER, 62.5);*/
 	
 	//Upper right bouncer
 	int points10[8] = { 640, 511,
@@ -328,7 +328,6 @@ bool ModuleSceneIntro::Start()
 						561, 495,
 						640, 472};
 	wall = App->physics->CreateChain(0, 0, points10, 8, b2BodyType::b2_staticBody, ColliderType::RIGHTUP_SLINGSHOT);
-	/*App->physics->CreateRectangle(105, 483, 85, 5, b2BodyType::b2_staticBody, ColliderType::BUMPER, -18.5);*/
 	
 	//Lower right bouncer
 	int points11[10] = { 560, 505,
@@ -337,9 +336,6 @@ bool ModuleSceneIntro::Start()
 						501, 603,
 						558, 501};
 	wall = App->physics->CreateChain(0, 0, points11, 10, b2BodyType::b2_staticBody, ColliderType::RIGHTDOWN_SLINGSHOT);
-	/*App->physics->CreateRectangle(175, 555, 115, 10, b2BodyType::b2_staticBody, ColliderType::BUMPER, 62.5);*/
-
-
 
 	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
@@ -361,36 +357,91 @@ bool ModuleSceneIntro::CleanUp()
 
 update_status ModuleSceneIntro::Update()
 {
-	App->renderer->Blit(scene, 0, 0, NULL);
 
-	currentAnim = &flipperUp;
-
-	// If user presses SPACE, enable RayCast
-	if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
-	{
-		// Enable raycast mode
-		ray_on = !ray_on;
-
-		// Origin point of the raycast is be the mouse current position now (will not change)
-		ray.x = App->input->GetMouseX();
-		ray.y = App->input->GetMouseY();
+	if (App->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN) {
+		pause = !pause;
 	}
 
-	
-	// Prepare for raycast ------------------------------------------------------
-	// The target point of the raycast is the mouse current position (will change over game time)
-	iPoint mouse;
-	mouse.x = App->input->GetMouseX();
-	mouse.y = App->input->GetMouseY();
+	if (pause) {
 
-	// Total distance of the raycast reference segment
-	int ray_hit = ray.DistanceTo(mouse);
+	}
+	else {
+		
+		currentAnim = &flipperUp;
 
-	// Declare a vector. We will draw the normal to the hit surface (if we hit something)
-	fVector normal(0.0f, 0.0f);
+		// If user presses SPACE, enable RayCast
+		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+		{
+			// Enable raycast mode
+			ray_on = !ray_on;
 
-	//Ball Shooter mechanic
-	Shot();
+			// Origin point of the raycast is be the mouse current position now (will not change)
+			ray.x = App->input->GetMouseX();
+			ray.y = App->input->GetMouseY();
+		}
+
+
+		// Prepare for raycast ------------------------------------------------------
+		// The target point of the raycast is the mouse current position (will change over game time)
+		iPoint mouse;
+		mouse.x = App->input->GetMouseX();
+		mouse.y = App->input->GetMouseY();
+
+		// Total distance of the raycast reference segment
+		int ray_hit = ray.DistanceTo(mouse);
+
+		// Declare a vector. We will draw the normal to the hit surface (if we hit something)
+		fVector normal(0.0f, 0.0f);
+
+		//Ball Shooter mechanic
+		Shot();
+
+		//Spring animation
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+			currentAnim = &flipperCompressing;
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
+		{
+			flipperCompressing.Reset();
+			App->audio->PlayFx(kicker_sfx);
+		}
+
+		//Check if MULTIPLIERS are ACTIVATED
+		//X2 Multiplier
+		if (App->player->multiplierx2IsActive == true) {
+			if (App->player->multiplierTime > 1200)  //Time multiplier is active is 10 seconds
+			{
+				LOG("Deactivating x2 multiplier");
+				App->player->multiplierx2IsActive = false;
+				App->player->multiplierTime = 0;
+				App->audio->PlayFx(multiplierDeactivation_sfx);
+			}
+
+			App->player->multiplierTime++;
+		}
+		//X3 Multiplier
+		if (App->player->multiplierx3IsActive == true) {
+			if (App->player->multiplierTime > 600) //Time multiplier is active is 5 seconds
+			{
+				LOG("Deactivating x3 multiplier");
+				App->player->multiplierx3IsActive = false;
+				App->player->multiplierTime = 0;
+				App->audio->PlayFx(multiplierDeactivation_sfx);
+			}
+			App->player->multiplierTime++;
+		}
+
+
+		
+	}
+
+	//Draw Scene
+	App->renderer->Blit(scene, 0, 0, NULL);
+
+	//Blit UI
+	App->ui->BlitScore();
+	App->ui->BlitHighScore();
+	App->ui->BlitLives();
+	App->ui->BlitPrevScore();
 
 	//Blit flippers
 	if (leftFlipper != NULL)
@@ -405,47 +456,6 @@ update_status ModuleSceneIntro::Update()
 		rightFlipper->GetPosition(x, y);
 		App->renderer->Blit(rightFlipperTex, x, y, NULL, 0.2f, rightFlipper->GetRotation());
 	}
-
-	//Blit UI
-	App->ui->BlitScore();
-	App->ui->BlitHighScore();
-	App->ui->BlitLives();
-	App->ui->BlitPrevScore();
-	
-	//Spring animation
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		currentAnim = &flipperCompressing;
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
-	{
-		flipperCompressing.Reset();
-		App->audio->PlayFx(kicker_sfx);
-	}
-
-	//Check if MULTIPLIERS are ACTIVATED
-	//X2 Multiplier
-	if (App->player->multiplierx2IsActive == true) {
-		if (App->player->multiplierTime > 1200)  //Time multiplier is active is 10 seconds
-		{
-			LOG("Deactivating x2 multiplier");
-			App->player->multiplierx2IsActive = false;
-			App->player->multiplierTime = 0;
-			App->audio->PlayFx(multiplierDeactivation_sfx);
-		}
-
-		App->player->multiplierTime++;
-	}
-	//X3 Multiplier
-	if (App->player->multiplierx3IsActive == true) {
-		if (App->player->multiplierTime > 600) //Time multiplier is active is 5 seconds
-		{
-			LOG("Deactivating x3 multiplier");
-			App->player->multiplierx3IsActive = false;
-			App->player->multiplierTime = 0;
-			App->audio->PlayFx(multiplierDeactivation_sfx);
-		}
-		App->player->multiplierTime++;
-	}
-
 
 	//Blit Kicker anims
 	SDL_Rect rect = currentAnim->GetCurrentFrame();

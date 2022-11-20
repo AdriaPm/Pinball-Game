@@ -79,6 +79,8 @@ public:
 	float distance;
 	b2Vec2 shooterInitPos;
 
+	bool pause;
+
 private:
 
 	bool stopShot;
