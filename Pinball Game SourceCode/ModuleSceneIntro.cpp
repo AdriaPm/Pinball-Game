@@ -423,7 +423,7 @@ update_status ModuleSceneIntro::Update()
 	//Check if MULTIPLIERS are ACTIVATED
 	//X2 Multiplier
 	if (App->player->multiplierx2IsActive == true) {
-		if (App->player->multiplierTime > 600)  //Time multiplier is active is 10 seconds
+		if (App->player->multiplierTime > 1200)  //Time multiplier is active is 10 seconds
 		{
 			LOG("Deactivating x2 multiplier");
 			App->player->multiplierx2IsActive = false;
@@ -435,7 +435,7 @@ update_status ModuleSceneIntro::Update()
 	}
 	//X3 Multiplier
 	if (App->player->multiplierx3IsActive == true) {
-		if (App->player->multiplierTime > 300) //Time multiplier is active is 5 seconds
+		if (App->player->multiplierTime > 600) //Time multiplier is active is 5 seconds
 		{
 			LOG("Deactivating x3 multiplier");
 			App->player->multiplierx3IsActive = false;
