@@ -338,8 +338,7 @@ bool ModuleSceneIntro::Start()
 						558, 501};
 	wall = App->physics->CreateChain(0, 0, points11, 10, b2BodyType::b2_staticBody, ColliderType::RIGHTDOWN_SLINGSHOT);
 
-	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.
-	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
+	
 	
 	return ret;
 }
@@ -488,7 +487,7 @@ update_status ModuleSceneIntro::Update()
 
 void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
-	// Do something else. You can also check which bodies are colliding (sensor? ball? player?)
+	
 }
 
 void ModuleSceneIntro::Shot() {

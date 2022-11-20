@@ -26,7 +26,7 @@ ModulePhysics::ModulePhysics(Application* app, bool start_enabled) : Module(app,
 // Destructor
 ModulePhysics::~ModulePhysics()
 {
-	// You should do some memory cleaning here, if required
+	
 }
 
 bool ModulePhysics::Start()
@@ -165,15 +165,7 @@ update_status ModulePhysics::PostUpdate()
 				if (f->GetShape()->TestPoint(b->GetTransform(), p) == true)
 				{
 
-					// If a body was selected we will attach a mouse joint to it
-					// so we can pull it around
-
-					// TODO 2: If a body was selected, create a mouse joint
-					// using mouse_joint class property
-
-					// NOTE: you do TODO2 here or also in the original handout's location. 
-					// It doesn't matter unless you are triggering several objects at once;
-					// I leave it to you to add safety checks to avoid re-defining several mouse joints.
+					
 
 					// The variable "b2Body* mouse_body;" is defined in the header ModulePhysics.h 
 					// We need to keep this body throughout several game frames; you cannot define it as a local variable here. 
@@ -219,15 +211,15 @@ update_status ModulePhysics::PostUpdate()
 		}
 	}
 
-	// TODO 4: If the player releases the mouse button, destroy the joint
+	
 	if (mouse_body != nullptr && mouse_joint != nullptr)
 	{
 		if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_UP)
 		{
-			// Tell Box2D to destroy the mouse_joint
+			
 			world->DestroyJoint(mouse_joint);
 
-			// DO NOT FORGET THIS! We need it for the "if (mouse_body != nullptr && mouse_joint != nullptr)"
+			
 			mouse_joint = nullptr; 
 			mouse_body = nullptr;
 		}
