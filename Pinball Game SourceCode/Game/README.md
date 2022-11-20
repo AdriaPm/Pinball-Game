@@ -38,6 +38,8 @@ Ball reset after touching collider crashes becuase is inside the death collider.
 
 Ball stuck in bouncers doing the same path. FIX --> For an amount of bounces changes normal impulse direction for changing the path.
 
+Flippers stuck after using them. FIX --> Change the flippers & joints position so non of their bodies collide with anything else when using them. 
+
 ## License
 
 This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](https://mit-license.org/) for further details.
