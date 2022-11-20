@@ -238,6 +238,7 @@ bool ModulePhysics::CleanUp()
 
 	// Delete the whole physics world!
 	delete world;
+	world = nullptr;
 
 	return true;
 }

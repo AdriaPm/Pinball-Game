@@ -150,6 +150,8 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		deadBall = true;
 		if (lives == 0)
 		{
+			multiplierx2IsActive = false;
+			multiplierx3IsActive = false;
 			App->fade->FadeBlack(App->scene_intro, (Module*)App->ending_screen, 90);
 		}
 		break;
