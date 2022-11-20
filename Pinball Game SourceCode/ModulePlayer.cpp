@@ -79,9 +79,10 @@ update_status ModulePlayer::Update()
 	currentAnim = &idleAnim;
 	
 	if (App->scene_intro->pause) {
-
+		pbody->body->SetAwake(false);
 	}
 	else {
+		pbody->body->SetAwake(true);
 		//Reset function (R key)
 		if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
 			App->player->ResetPosition();
