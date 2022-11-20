@@ -8,6 +8,7 @@ Pinball game created for Physics II subject.
 
  - {F1} - View logic/colliders + enable mouse joints.
  - {R} - Reset ball's position
+ - {E} - Pause Game
 
 ## Controls
 
