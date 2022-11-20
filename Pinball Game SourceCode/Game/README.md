@@ -32,6 +32,12 @@ Pinball game created for Physics II subject.
  ## Github repository
   Click [here](https://github.com/Historn/PinBall_Game) to go to our project's Github repository.
  
+## Fixed Bugs
+
+Ball reset after touching collider crashes becuase is inside the death collider. FIX --> Wait an amount of ms before reseting ball position.
+
+Ball stuck in bouncers doing the same path. FIX --> For an amount of bounces changes normal impulse direction for changing the path.
+
 ## License
 
 This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](https://mit-license.org/) for further details.
