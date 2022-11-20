@@ -445,11 +445,14 @@ update_status ModuleSceneIntro::Update()
 			App->fps--;
 
 		//Changes Gravity
-		if (App->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN)
+		if (App->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN) {
 			App->physics->gravity.y += 0.1;
-		if (App->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN)
+			App->player->pbody->body->SetLinearVelocity(App->physics->gravity);
+		}
+		if (App->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
 			App->physics->gravity.y -= 0.1;
-
+			App->player->pbody->body->SetLinearVelocity(App->physics->gravity);
+		}
 		//Changes Gravity
 		if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
 			App->physics->restitutionCoeff += 0.1;

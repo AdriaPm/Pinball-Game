@@ -58,6 +58,8 @@ update_status ModulePhysics::PreUpdate()
 	// WARNING: WE ARE STEPPING BY CONSTANT 1/60 SECONDS!
 	world->Step(1.0f / 60.0f, 6, 2);
 
+	world->SetGravity(gravity);
+
 	// Because Box2D does not automatically broadcast collisions/contacts with sensors, 
 	// we have to manually search for collisions and "call" the equivalent to the ModulePhysics::BeginContact() ourselves...
 	for(b2Contact* c = world->GetContactList(); c; c = c->GetNext())
