@@ -2,7 +2,7 @@
 
 ## Description
 
-Pinball game created for Physics II subject.
+Pinball game created for Physics II subject. Game was created to demonstrate use and understanding of the Box 2D Physics System, which was succesfully integrated into SDL. 
 
 ## Key Features
 
@@ -13,6 +13,7 @@ Pinball game created for Physics II subject.
  - {LEFT Arrow} - Move left flipper.
  - {RIGHT Arrow} - Move right flipper.
  - {DOWN Arrow} - Action the ball kicker.
+ 
 
 ## Developers
 
