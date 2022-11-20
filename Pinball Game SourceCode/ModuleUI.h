@@ -34,6 +34,9 @@ public:
 	void BlitChangeGravity();
 	void BlitChangeRestitutionCoeff();
 
+	void BlitPlayerXPos();
+	void BlitPlayerYPos();
+
 	uint font_id = -1;
 	uint font2_id = -1;
 
