@@ -429,6 +429,13 @@ update_status ModuleSceneIntro::Update()
 	App->ui->BlitHighScore();
 	App->ui->BlitLives();
 	App->ui->BlitPrevScore();
+	
+	if (App->physics->debug)
+	{
+		App->ui->BlitChangeFPS();
+		App->ui->BlitChangeGravity();
+		App->ui->BlitChangeRestitutionCoeff();
+	}
 
 	//Blit flippers
 	if (leftFlipper != NULL)

@@ -32,8 +32,10 @@ public:
 
 	void BlitChangeFPS();
 	void BlitChangeGravity();
+	void BlitChangeRestitutionCoeff();
 
 	uint font_id = -1;
+	uint font2_id = -1;
 
 private:
 

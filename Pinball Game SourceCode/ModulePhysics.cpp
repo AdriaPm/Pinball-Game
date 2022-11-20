@@ -36,6 +36,8 @@ bool ModulePhysics::Start()
 	gravity.x = GRAVITY_X;
 	gravity.y = -GRAVITY_Y;
 
+	restitutionCoeff = RESTITUTION_COEF;
+
 	// Create a new World
 	world = new b2World(gravity);
 

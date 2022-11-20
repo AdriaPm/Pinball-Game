@@ -82,10 +82,12 @@ public:
 
 	b2Vec2 gravity;
 
-private:
+	float restitutionCoeff;
 
 	// Debug mode
 	bool debug;
+
+private:
 
 	// Main ground
 	b2Body* ground;

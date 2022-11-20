@@ -25,6 +25,9 @@ bool ModuleUI::Start()
 
 	font_id = App->font->Load("Assets/Textures/font.png", "0123456789", 1);
 
+	char lookupTable[] = { "!  ,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz" };
+	font2_id = App->font->Load("Assets/Textures/font2.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 2);
+
 	return ret;
 }
 
@@ -94,13 +97,19 @@ void ModuleUI::BlitFinalPrevScore()
 }
 
 void ModuleUI::BlitChangeFPS() {
-	char changeFPS[4];
-	sprintf_s(changeFPS, 4, "%d", App->fps);
-	App->font->BlitText(423, 493, font_id, changeFPS);
+	char changeFPS[10];
+	sprintf_s(changeFPS, 10, "fps; %d", App->fps);
+	App->font->BlitText(465, 723, font2_id, changeFPS);
 }
 
 void ModuleUI::BlitChangeGravity() {
-	char changeGravity[4];
-	sprintf_s(changeGravity, 4, "%d", App->physics->gravity.y);
-	App->font->BlitText(423, 493, font_id, changeGravity);
+	char changeGravity[25];
+	sprintf_s(changeGravity, 25, "gravity; %.2f m/s2", App->physics->gravity.y);
+	App->font->BlitText(465, 733, font2_id, changeGravity);
+}
+
+void ModuleUI::BlitChangeRestitutionCoeff() {
+	char changeRestitutionCoeff[50];
+	sprintf_s(changeRestitutionCoeff, 50, "restitution coefficient; %.2f", App->physics->restitutionCoeff);
+	App->font->BlitText(465, 743, font2_id, changeRestitutionCoeff);
 }
