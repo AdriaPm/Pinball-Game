@@ -437,6 +437,25 @@ update_status ModuleSceneIntro::Update()
 		App->ui->BlitChangeRestitutionCoeff();
 		App->ui->BlitPlayerXPos();
 		App->ui->BlitPlayerYPos();
+
+		//Changes FPS
+		if (App->input->GetKey(SDL_SCANCODE_U) == KEY_DOWN)
+			App->fps++;
+		if (App->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN)
+			App->fps--;
+		
+		//Changes Gravity
+		if (App->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN)
+			App->physics->gravity.y += 0.1;
+		if (App->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN)
+			App->physics->gravity.y -= 0.1;
+		
+		//Changes Gravity
+		if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
+			App->physics->restitutionCoeff += 0.1;
+		if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+			App->physics->restitutionCoeff -= 0.1;
+
 	}
 
 	//Blit flippers
