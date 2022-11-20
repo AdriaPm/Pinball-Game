@@ -8,7 +8,14 @@ Pinball game created for Physics II subject.
 
  - {F1} - View logic/colliders + enable mouse joints.
  - {R} - Reset ball's position
- - {E} - Pause Game
+
+ ##Debug keys
+  - {U} - Adds +1 FPS
+  - {J} - Reduces -1 FPS
+  - {I} - Adds +0.1 Gravity
+  - {K} - Reduces -0.1 Gravity
+  - {O} - Adds +0.1 Restitution Coefficient
+  - {L} - Reduces -0.1 Restitution Coefficient
 
 ## Controls
 

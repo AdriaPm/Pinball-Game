@@ -59,7 +59,7 @@ bool ModulePlayer::Start()
 	pbody = App->physics->CreateCircle(position.x, position.y, 13, b2_dynamicBody, ColliderType::BALL);
 	pbody->listener = this;
 
-	velocity.y = -GRAVITY_Y;
+	velocity.y = App->physics->gravity.y;
 	pbody->body->SetLinearVelocity(velocity);
 
 	return true;
@@ -153,7 +153,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 		LOG("Collision BUMPER");
 		bounceImpulse = { pbody->body->GetWorldCenter() - physB->body->GetWorldCenter() };
 		bounceImpulse.Normalize();
-		pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
+		pbody->body->ApplyLinearImpulse(App->physics->restitutionCoeff * bounceImpulse, pbody->body->GetWorldCenter(), true);
 		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::RIGHTDOWN_SLINGSHOT:
@@ -165,7 +165,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 			bounceImpulse = { -1.25f, -0.75f };
 			bounces = 0;
 		}
-		pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
+		pbody->body->ApplyLinearImpulse(App->physics->restitutionCoeff * bounceImpulse, pbody->body->GetWorldCenter(), true);
 		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::LEFTDOWN_SLINGSHOT:
@@ -177,7 +177,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 			bounceImpulse = { 1.25f, -0.75f };
 			bounces = 0;
 		}
-		pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
+		pbody->body->ApplyLinearImpulse(App->physics->restitutionCoeff * bounceImpulse, pbody->body->GetWorldCenter(), true);
 		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::RIGHTUP_SLINGSHOT:
@@ -189,7 +189,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 			bounceImpulse = { -1.25f, -0.75f };
 			bounces = 0;
 		}
-		pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
+		pbody->body->ApplyLinearImpulse(App->physics->restitutionCoeff * bounceImpulse, pbody->body->GetWorldCenter(), true);
 		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::LEFTUP_SLINGSHOT:
@@ -201,7 +201,7 @@ void ModulePlayer::OnCollision(PhysBody* physA, PhysBody* physB)
 			bounceImpulse = { 1.25f, -0.75f };
 			bounces = 0;
 		}
-		pbody->body->ApplyLinearImpulse(RESTITUTION_COEF * bounceImpulse, pbody->body->GetWorldCenter(), true);
+		pbody->body->ApplyLinearImpulse(App->physics->restitutionCoeff * bounceImpulse, pbody->body->GetWorldCenter(), true);
 		App->audio->PlayFx(bumper_sfx);
 		break;
 	case ColliderType::BONUS:
