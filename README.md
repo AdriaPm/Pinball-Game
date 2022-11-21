@@ -2,7 +2,7 @@
 
 ## Description
 
-Pinball game created for Physics II subject.
+Pinball game created for Physics II subject at CITM UPC university.
 
 ## Key Features
 
@@ -24,6 +24,11 @@ Pinball game created for Physics II subject.
  - {RIGHT Arrow} - Move right flipper.
  - {DOWN Arrow} - Action the ball kicker.
 
+## Combos/Multipliers
+ - {REACHING 1000pts} - Extra Life/Ball 
+ - {x2 Multiplier} - 20 seconds of x2 score
+ - {x3 Multiplier} - 10 seconds of x3 score
+ 
 ## Developers
 
  ![](https://github.com/Historn/PinBall_Game/blob/master/TeamPhotos/arnaujimenez.png)
@@ -38,8 +43,9 @@ Pinball game created for Physics II subject.
  ![](https://github.com/Historn/PinBall_Game/blob/master/TeamPhotos/joelchaves.jpg)
  - [Joel Chaves Moreno](https://github.com/JoeyCM) - CODE
  
- ## Github repository
-  Click [here](https://github.com/Historn/PinBall_Game) to go to our project's Github repository.
+## Github repository
+
+Click [here](https://github.com/Historn/PinBall_Game) to go to our project's Github repository.
  
 ## Fixed Bugs
 
