@@ -9,6 +9,7 @@ Pinball game created for Physics II subject at CITM UPC university.
  - {F1} - View logic/colliders + enable mouse joints.
  - {R} - Reset ball's position
  - {G} - Activate/Deactivate God Mode
+ - {F} - Give vertical linear impulse to the ball
 
 ## Debug keys
   - {U} - Adds +1 FPS
