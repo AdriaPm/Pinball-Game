@@ -10,7 +10,7 @@ Pinball game created for Physics II subject.
  - {R} - Reset ball's position
  - {G} - Activate/Deactivate God Mode
 
- ##Debug keys
+## Debug keys
   - {U} - Adds +1 FPS
   - {J} - Reduces -1 FPS
   - {I} - Adds +0.1 Gravity
